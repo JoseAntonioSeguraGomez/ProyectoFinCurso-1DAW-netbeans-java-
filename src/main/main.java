@@ -3,15 +3,28 @@ package main;
 import bbdd.conector;
 import vista.*;
 import controlador.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.Timer;
 
 public class main extends controlador{
     public static void main(String[] args) {
         
         Inicio inicio =new Inicio();
-        
-        inicio.setVisible(true);
+            inicio.setVisible(true);
+            Timer timer = new Timer(5000, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    InicioCarga inicioCarga = new InicioCarga();
+                    inicioCarga.setVisible(true);
+                    inicio.setVisible(false); // Cierra la ventana actual
+                }
+            });
+                timer.setRepeats(false); // solo se ejecuta una vez
+                timer.start(); // inicia el temporizador
+                
         
         /*conector.Conectar();
         controlador Controlador = new controlador();
