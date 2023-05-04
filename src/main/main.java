@@ -5,25 +5,40 @@ import vista.*;
 import controlador.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.Timer;
 
-public class main extends controlador{
+public class main extends controlador {
     public static void main(String[] args) {
-        
-        Inicio inicio =new Inicio();
-            inicio.setVisible(true);
-            Timer timer = new Timer(5000, new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    InicioCarga inicioCarga = new InicioCarga();
-                    inicioCarga.setVisible(true);
-                    inicio.setVisible(false); // Cierra la ventana actual
-                }
-            });
-                timer.setRepeats(false); // solo se ejecuta una vez
-                timer.start(); // inicia el temporizador
+        Inicio inicio = new Inicio();
+        InicioCarga inicioCarga = new InicioCarga();
+        InicioIniciarSesion inicioLogin = new InicioIniciarSesion();
+
+
+        inicio.setVisible(true);
+
+        try {
+            Thread.sleep(5000);
+            inicio.setVisible(false);
+            inicioCarga.setVisible(true); 
+            
+            Thread.sleep(5000);
+            inicioCarga.setVisible(false); 
+            inicioLogin.setVisible(true);
+
+        } catch (Exception ex){
+            
+        }
+   
+
+    }
+}
+                
+                
                 
         
         /*conector.Conectar();
@@ -58,7 +73,5 @@ public class main extends controlador{
         }*/
 
        
-       conector.CerrarConexion();
-    }
-}
+
 

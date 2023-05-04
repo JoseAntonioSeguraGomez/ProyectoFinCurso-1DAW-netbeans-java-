@@ -23,6 +23,7 @@ public class InicioCarga extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(820, 480));
 
@@ -60,7 +61,7 @@ public class InicioCarga extends javax.swing.JFrame {
             @Override
             public void run() {
                 new InicioCarga().setVisible(true);
-               /* try {
+                /*try {
                     File archivoDeSonido = new File("C:\\Users\\joans\\Desktop\\Imagenes\\Transicion.wav");
                     Clip clip = AudioSystem.getClip();
                     clip.open(AudioSystem.getAudioInputStream(archivoDeSonido));
