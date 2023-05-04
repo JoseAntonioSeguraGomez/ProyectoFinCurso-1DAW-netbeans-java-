@@ -1,4 +1,4 @@
-package vista;
+package basura;
 
 import javax.swing.*;
 

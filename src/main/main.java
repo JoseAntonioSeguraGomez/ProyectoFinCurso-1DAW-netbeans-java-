@@ -16,7 +16,7 @@ public class main extends controlador {
     public static void main(String[] args) {
         Inicio inicio = new Inicio();
         InicioCarga inicioCarga = new InicioCarga();
-        InicioIniciarSesion inicioLogin = new InicioIniciarSesion();
+        Menu inicioLogin = new Menu();
 
 
         inicio.setVisible(true);

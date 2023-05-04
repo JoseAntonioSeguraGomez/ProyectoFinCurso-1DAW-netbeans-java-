@@ -1,5 +1,8 @@
 package controlador;
 
+import basura.Login;
+import basura.RegistrarUsuario;
+import basura.AnadirProducto;
 import bbdd.*;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;

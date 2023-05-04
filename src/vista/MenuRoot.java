@@ -1,5 +1,6 @@
 package vista;
 
+import basura.AnadirProducto;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
