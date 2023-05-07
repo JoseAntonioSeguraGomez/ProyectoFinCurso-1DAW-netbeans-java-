@@ -39,7 +39,7 @@ public class controlador {
     }
     
 public void menuRoot() {
-    MenuRoot menuRoot = new MenuRoot();
+    MenuRoot2 menuRoot = new MenuRoot2();
     JButton verBD = menuRoot.getVerBD();
     JButton productos = menuRoot.getAñadir();
     JTable tabla = menuRoot.getJTable();
