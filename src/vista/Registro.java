@@ -2,6 +2,7 @@ package vista;
 
 import modelo.Usuario;
 import controlador.ControladorUsuario;
+import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JFrame {
 
@@ -300,9 +301,11 @@ public class Registro extends javax.swing.JFrame {
         
         Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
 
-        new ControladorUsuario().AnadirUsuarios(usuario1);
- 
-        this.setVisible(false);
+        if(new ControladorUsuario().AnadirUsuarios(usuario1).equals(telefono)){
+             JOptionPane.showMessageDialog(null, "Has introducido de manera incorrecta el telefono", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            this.setVisible(false);
+        }
     
         
     }//GEN-LAST:event_btnRegistrarseActionPerformed

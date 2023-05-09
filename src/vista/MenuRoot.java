@@ -15,6 +15,7 @@ public class MenuRoot extends javax.swing.JFrame {
      */
     public MenuRoot() {
         initComponents();
+        setVisible(true);
     }
 
     /**

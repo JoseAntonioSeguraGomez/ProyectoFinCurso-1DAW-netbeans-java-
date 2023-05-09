@@ -23,6 +23,7 @@ public class Menu extends javax.swing.JFrame {
         btnRegistrarme = new javax.swing.JButton();
         btnIniciarSesion = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -62,7 +63,7 @@ public class Menu extends javax.swing.JFrame {
                 btnRegistrarmeActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarme, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 450, -1, -1));
+        jPanel1.add(btnRegistrarme, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, -1, -1));
 
         btnIniciarSesion.setBackground(new java.awt.Color(0, 102, 204));
         btnIniciarSesion.setFont(new java.awt.Font("Source Code Pro Black", 0, 14)); // NOI18N
@@ -75,7 +76,7 @@ public class Menu extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 160, 40));
+        jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, 160, 40));
 
         btnExit.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
         btnExit.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir.png")); // NOI18N
@@ -86,6 +87,10 @@ public class Menu extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 100, -1));
+
+        jLabel8.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 300, 30));
 
         jLabel6.setFont(new java.awt.Font("Source Sans Pro Black", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 204));
@@ -154,17 +159,18 @@ public class Menu extends javax.swing.JFrame {
 
         if (resultadoInicioSesion != null) {
             if (resultadoInicioSesion.equals("Cliente")) {
-                
+                this.setVisible(false);
             } else if (resultadoInicioSesion.equals("root")) {
+                this.setVisible(false);
                 new MenuRoot();
             } else {
-                this.dispose();
+                jLabel8.setText("Las credenciales introducidas son incorrectas");
             }
         } else {
-            this.dispose();
+jLabel8.setText("Las credenciales introducidas son incorrectas");
         }
                 
-        this.setVisible(false);
+        
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
 
@@ -179,6 +185,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtUsuario;

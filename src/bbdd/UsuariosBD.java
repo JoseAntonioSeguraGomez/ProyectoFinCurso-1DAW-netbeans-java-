@@ -28,7 +28,29 @@ public class UsuariosBD {
 
     }
     
-    public ArrayList ConsultarInicioSesion(Usuario usuario){
+    public String ConsultarInicioSesion(Usuario usuario){
+        try {
+            String rol = null;
+            String nombre = usuario.getUsuario();
+            String contrasena = usuario.getContrasena();
+
+            ResultSet resultado = conector.EjecutarSentencia("SELECT ROL FROM USUARIOS WHERE NOMBRE = '" + nombre + "' AND CONTRASENA = '" + contrasena + "'");
+            
+            if (resultado.next()) {
+                rol = resultado.getString("ROL");
+            }
+
+            return rol;
+        
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+}
+
+/*
+    public ArrayList<String[]> ConsultarInicioSesion(Usuario usuario){
         try {
             ArrayList<String[]> resultados = new ArrayList<>();
 
@@ -44,10 +66,15 @@ public class UsuariosBD {
                 }
             resultados.add(fila);
          }
-            return resultados;
             
-        } catch (SQLException ex){
+            if (resultados.get(0)[11] == null) {
+                return null;
+            } else {
+                return resultados;
+            }
+        }catch (SQLException ex){
             return null;
         }
     }
 }
+*/

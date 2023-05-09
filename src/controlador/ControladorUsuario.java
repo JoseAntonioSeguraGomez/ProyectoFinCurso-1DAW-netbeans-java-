@@ -6,25 +6,19 @@ import java.util.ArrayList;
 import vista.Registro;
 
 public class ControladorUsuario {
-    public void AnadirUsuarios(Usuario usuario){
+    public String AnadirUsuarios(Usuario usuario){
+        if(usuario.getTelefono().length() > 12){
+            return "telefono";
+        }
         UsuariosBD usuarios = new UsuariosBD();
         usuarios.AnadirUsuariosBD(usuario);
         new Registro();
+        return "hecho";
     }  
     
     public String IniciarSesion(Usuario usuario) {
-        ArrayList<String> lista = new UsuariosBD().ConsultarInicioSesion(usuario);
-
-        if (lista != null && lista.size() >= 12) {
-            String rol = lista.get(11);
-
-            if (rol.equals("Cliente")) {
-                return "Cliente";
-            } else {
-                return "root";
-            }
-        }
-
-        return null;
+        String rol = new UsuariosBD().ConsultarInicioSesion(usuario);
+       
+        return rol;
     }
 }
