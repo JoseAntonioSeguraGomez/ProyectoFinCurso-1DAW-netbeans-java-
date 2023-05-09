@@ -74,7 +74,7 @@ public class MenuRoot extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(922, 130, -1, 40));
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 130, 60, 40));
 
         jButton7.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Lupa.png")); // NOI18N
@@ -85,7 +85,7 @@ public class MenuRoot extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 270, 40));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 210, 40));
 
         jButton6.setBackground(new java.awt.Color(153, 0, 0));
         jButton6.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
@@ -97,7 +97,7 @@ public class MenuRoot extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 150, 40));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 160, 40));
 
         jButton4.setBackground(new java.awt.Color(0, 204, 0));
         jButton4.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
@@ -109,7 +109,7 @@ public class MenuRoot extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, 130, 40));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 160, 40));
 
         jButton3.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\BD.png")); // NOI18N

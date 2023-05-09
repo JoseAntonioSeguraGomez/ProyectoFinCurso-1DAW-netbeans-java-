@@ -389,7 +389,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
-                int key =evt.getKeyChar();
+        int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
         boolean minusculas = key >= 97 && key <= 122;
@@ -419,7 +419,7 @@ public class Registro extends javax.swing.JFrame {
             evt.consume();
         }
         
-        if(txtTelefono.getText().length() == 10){
+        if(txtTelefono.getText().length() == 9){
             evt.consume();
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
