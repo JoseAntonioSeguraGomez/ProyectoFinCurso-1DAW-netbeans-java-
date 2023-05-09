@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.*; 
+import java.util.ArrayList;
         
 public class UsuariosBD {
     public void AnadirUsuariosBD(Usuario usuario){
@@ -25,5 +26,28 @@ public class UsuariosBD {
 
         conector.EjecutarUpdate("INSERT INTO USUARIOS (USUARIO, CONTRASENA, NOMBRE, APELLIDOS, NACIMIENTO, TELEFONO, GMAIL, PAIS, PROVINCIA, CIUDAD, FONDOS, ROL) VALUES ('" + valor1 + "', '" + valor2 + "', '" + valor3 + "','" + valor4 + "','" + valor5 + "', '" + valor6 + "', '" + valor7 + "', '" + valor8 + "','" + valor9 + "','" + valor10 + "', '" + valor11 + "', '" + valor12 + "')");
 
+    }
+    
+    public ArrayList ConsultarInicioSesion(Usuario usuario){
+        try {
+            ArrayList<String[]> resultados = new ArrayList<>();
+
+            String nombre = usuario.getUsuario();
+            String contrasena = usuario.getContrasena();
+
+            ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM USUARIOS WHERE NOMBRE = '" + nombre + "' AND CONTRASENA = '" + contrasena + "'");
+            
+            while (resultado.next()) {
+            String[] fila = new String[12];
+                for (int i = 0; i < 12; i++) {
+                    fila[i] = resultado.getString(i + 1);
+                }
+            resultados.add(fila);
+         }
+            return resultados;
+            
+        } catch (SQLException ex){
+            return null;
+        }
     }
 }
