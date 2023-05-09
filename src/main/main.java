@@ -14,10 +14,9 @@ import javax.swing.Timer;
 
 public class main extends controlador {
     public static void main(String[] args) {
+        conector.Conectar();
         Inicio inicio = new Inicio();
         InicioCarga inicioCarga = new InicioCarga();
-        Menu inicioLogin = new Menu();
-
 
         inicio.setVisible(true);
 
@@ -27,11 +26,11 @@ public class main extends controlador {
             inicioCarga.setVisible(true); 
             
             Thread.sleep(5000);
-            inicioCarga.setVisible(false); 
-            inicioLogin.setVisible(true);
+            inicioCarga.setVisible(false);
+            new Menu();
 
         } catch (Exception ex){
-            
+            System.out.println(ex);
         }
    
 
