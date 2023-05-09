@@ -1,5 +1,8 @@
 package vista;
 
+import modelo.Usuario;
+import controlador.ControladorUsuario;
+
 public class Menu extends javax.swing.JFrame {
 
 
@@ -19,7 +22,7 @@ public class Menu extends javax.swing.JFrame {
         txtContrasena = new javax.swing.JPasswordField();
         btnRegistrarme = new javax.swing.JButton();
         btnIniciarSesion = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -74,15 +77,15 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel1.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 450, 160, 40));
 
-        jButton3.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir.png")); // NOI18N
-        jButton3.setText("EXIT");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnExit.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
+        btnExit.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir.png")); // NOI18N
+        btnExit.setText("EXIT");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 100, -1));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 100, -1));
 
         jLabel6.setFont(new java.awt.Font("Source Sans Pro Black", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 102, 204));
@@ -135,22 +138,40 @@ public class Menu extends javax.swing.JFrame {
         registro.setVisible(true);
     }//GEN-LAST:event_btnRegistrarmeActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
         //if(jCheckBox1.isSelected()){
         //}
-    
+        String usuario = txtUsuario.getText();
+        String contrasena = txtContrasena.getText();
+        
+        Usuario usuario1 = new Usuario(usuario, contrasena);
+        
+        String resultadoInicioSesion = new ControladorUsuario().IniciarSesion(usuario1);
+
+        if (resultadoInicioSesion != null) {
+            if (resultadoInicioSesion.equals("Cliente")) {
+                
+            } else if (resultadoInicioSesion.equals("root")) {
+                new MenuRoot();
+            } else {
+                this.dispose();
+            }
+        } else {
+            this.dispose();
+        }
+                
         this.setVisible(false);
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnRegistrarme;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

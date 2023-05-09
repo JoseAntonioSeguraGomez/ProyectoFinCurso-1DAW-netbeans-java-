@@ -57,10 +57,8 @@ public void menuRoot() {
             try {
                 ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM productos");
 
-                // Eliminar las filas actuales del modelo de tabla
                 modelo.setRowCount(0);
 
-                // Agregar las filas al modelo
                 while (resultado.next()) {
                     Object[] fila = new Object[6];
                     fila[0] = resultado.getString("id");
