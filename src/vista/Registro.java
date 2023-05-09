@@ -91,11 +91,21 @@ public class Registro extends javax.swing.JFrame {
                 txtCiudadActionPerformed(evt);
             }
         });
+        txtCiudad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCiudadKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 180, -1));
 
         txtProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtProvinciaActionPerformed(evt);
+            }
+        });
+        txtProvincia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtProvinciaKeyTyped(evt);
             }
         });
         jPanel1.add(txtProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 180, -1));
@@ -115,6 +125,11 @@ public class Registro extends javax.swing.JFrame {
                 txtPaisActionPerformed(evt);
             }
         });
+        txtPais.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPaisKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 180, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -132,6 +147,11 @@ public class Registro extends javax.swing.JFrame {
                 txtTelefonoActionPerformed(evt);
             }
         });
+        txtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTelefonoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 240, 180, -1));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -142,6 +162,11 @@ public class Registro extends javax.swing.JFrame {
         txtGmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGmailActionPerformed(evt);
+            }
+        });
+        txtGmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtGmailKeyTyped(evt);
             }
         });
         jPanel1.add(txtGmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 180, -1));
@@ -161,6 +186,11 @@ public class Registro extends javax.swing.JFrame {
                 txtNacimientoActionPerformed(evt);
             }
         });
+        txtNacimiento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNacimientoKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 180, -1));
 
         txtApellidos.addActionListener(new java.awt.event.ActionListener() {
@@ -168,11 +198,21 @@ public class Registro extends javax.swing.JFrame {
                 txtApellidosActionPerformed(evt);
             }
         });
+        txtApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidosKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 180, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
+            }
+        });
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
             }
         });
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 180, -1));
@@ -202,6 +242,11 @@ public class Registro extends javax.swing.JFrame {
                 txtContrasenaActionPerformed(evt);
             }
         });
+        txtContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContrasenaKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, 180, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -212,6 +257,11 @@ public class Registro extends javax.swing.JFrame {
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
+            }
+        });
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyTyped(evt);
             }
         });
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 180, -1));
@@ -309,6 +359,124 @@ public class Registro extends javax.swing.JFrame {
     
         
     }//GEN-LAST:event_btnRegistrarseActionPerformed
+
+    private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        if(txtUsuario.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtUsuarioKeyTyped
+
+    private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
+        if(txtContrasena.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtContrasenaKeyTyped
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        int key =evt.getKeyChar();
+        
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacios = key >= 32;
+
+        if(!(mayusculas || minusculas || espacios)){
+            evt.consume();
+        }
+        
+        if(txtNombre.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
+                int key =evt.getKeyChar();
+        
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacios = key >= 32;
+
+        if(!(mayusculas || minusculas || espacios)){
+            evt.consume();
+        }
+        
+        if(txtApellidos.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtApellidosKeyTyped
+
+    private void txtNacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNacimientoKeyTyped
+        if(txtNacimiento.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNacimientoKeyTyped
+
+    private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
+         int key =evt.getKeyChar();
+        
+        boolean numeros = key >= 48 && key <= 57;
+
+        if(!numeros){
+            evt.consume();
+        }
+        
+        if(txtTelefono.getText().length() == 10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtTelefonoKeyTyped
+
+    private void txtGmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGmailKeyTyped
+        if(txtGmail.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGmailKeyTyped
+
+    private void txtPaisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaisKeyTyped
+        int key =evt.getKeyChar();
+        
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacios = key >= 32;
+
+        if(!(mayusculas || minusculas || espacios)){
+            evt.consume();
+        }
+        
+        if(txtPais.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPaisKeyTyped
+
+    private void txtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProvinciaKeyTyped
+        int key =evt.getKeyChar();
+        
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacios = key >= 32;
+
+        if(!(mayusculas || minusculas || espacios)){
+            evt.consume();
+        }
+        
+        if(txtProvincia.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtProvinciaKeyTyped
+
+    private void txtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCiudadKeyTyped
+        int key =evt.getKeyChar();
+        
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacios = key >= 32;
+
+        if(!(mayusculas || minusculas || espacios)){
+            evt.consume();
+        }
+        
+        if(txtCiudad.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtCiudadKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarse;
