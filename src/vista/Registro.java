@@ -352,8 +352,10 @@ public class Registro extends javax.swing.JFrame {
         Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
 
         String resultado = new ControladorUsuario().AnadirUsuarios(usuario1);
-                
-        if(resultado.equals("telefono")){
+        
+        if(resultado.equals("existe")){
+             JOptionPane.showMessageDialog(null, "El usuario escrito ya existe, escriba otro", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else if(resultado.equals("telefono")){
              JOptionPane.showMessageDialog(null, "Has introducido de manera incorrecta el número de teléfono", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else if(resultado.equals("vacio")){
              JOptionPane.showMessageDialog(null, "Alguno de los campos obigatorios está vacio", "Alerta", JOptionPane.WARNING_MESSAGE);

@@ -47,6 +47,25 @@ public class UsuariosBD {
             return null;
         }
     }
+    
+    public String ExisteUsuario(Usuario usuario){
+         try {
+            String usuario1 = null;
+            String nombre = usuario.getUsuario();
+
+            ResultSet resultado = conector.EjecutarSentencia("SELECT USUARIO FROM USUARIOS WHERE USUARIO = '" + nombre + "'");
+            
+            if (resultado.next()) {
+                usuario1 = resultado.getString("USUARIO");
+            }
+
+            return usuario1;
+        
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }
 
 /*

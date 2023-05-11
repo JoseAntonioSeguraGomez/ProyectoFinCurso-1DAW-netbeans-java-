@@ -7,7 +7,12 @@ import vista.*;
 
 public class ControladorUsuario {
     public String AnadirUsuarios(Usuario usuario){
-        if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || usuario.getTelefono().equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
+        UsuariosBD usuarios = new UsuariosBD();
+        String existe = usuarios.ExisteUsuario(usuario);
+        
+        if(existe != null){
+            return "existe";
+        }else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || usuario.getTelefono().equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
             return "vacio";
         } else if(usuario.getUsuario().length() < 4) {
             return "usuarioCorto";
@@ -24,7 +29,6 @@ public class ControladorUsuario {
         } else if (!usuario.getNacimiento().matches("\\d{4}-\\d{2}-\\d{2}")) {
             return "nacimientoIncorrecto";
         } else{
-            UsuariosBD usuarios = new UsuariosBD();
             usuarios.AnadirUsuariosBD(usuario);
             new Menu();
             return "hecho";
