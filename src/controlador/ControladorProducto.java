@@ -14,8 +14,13 @@ public class ControladorProducto {
             return new ProductosBD().obtenerDatos();            
         }
        
-        public boolean eliminarProducto(String id){
-            return true;
+        public String eliminarProducto(String id){
+            boolean resultado = new ProductosBD().eliminarProducto(id);
+            if(resultado == true){
+                return "eliminado";
+            }else{
+                return "error";
+            }
             
         }
 

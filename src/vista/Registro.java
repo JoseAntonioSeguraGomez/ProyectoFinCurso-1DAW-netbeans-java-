@@ -353,26 +353,11 @@ public class Registro extends javax.swing.JFrame {
 
         String resultado = new ControladorUsuario().AnadirUsuarios(usuario1);
         
-        if(resultado.equals("existe")){
-             JOptionPane.showMessageDialog(null, "El usuario escrito ya existe, escriba otro", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("telefono")){
-             JOptionPane.showMessageDialog(null, "Has introducido de manera incorrecta el número de teléfono", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("vacio")){
-             JOptionPane.showMessageDialog(null, "Alguno de los campos obigatorios está vacio", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("usuarioCorto")){
-             JOptionPane.showMessageDialog(null, "El nombre del usuario es demasiado corto", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("contrasenaCorto")){
-             JOptionPane.showMessageDialog(null, "La contraseña es demasiado corta", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("contrasenaSinCaracter")){
-             JOptionPane.showMessageDialog(null, "Debes introducir como mínimo algún caracter en la contraseña", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("contrasenaSinNumero")){
-             JOptionPane.showMessageDialog(null, "Debes introducir como mínimo algún digito en la contraseña", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("gmailIncorrecto")){
-             JOptionPane.showMessageDialog(null, "El formato de gmail es incorrecto", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else if(resultado.equals("nacimientoIncorrecto")){
-             JOptionPane.showMessageDialog(null, "El formato de nacimiento es incorrecto (*año-mes-dia*)", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else{
+        if(resultado.equals("hecho")){
             this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
+
         }
         
     }//GEN-LAST:event_btnRegistrarseActionPerformed

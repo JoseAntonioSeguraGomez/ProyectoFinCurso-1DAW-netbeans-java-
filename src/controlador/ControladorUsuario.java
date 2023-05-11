@@ -11,23 +11,23 @@ public class ControladorUsuario {
         String existe = usuarios.ExisteUsuario(usuario);
         
         if(existe != null){
-            return "existe";
+            return "El usuario escrito ya existe, escriba otro";
         }else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || usuario.getTelefono().equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
-            return "vacio";
+            return "Alguno de los campos obigatorios está vacio";
         } else if(usuario.getUsuario().length() < 4) {
-            return "usuarioCorto";
+            return "El nombre del usuario es demasiado corto";
         } else if(usuario.getContrasena().length() < 6) {
-            return "contrasenaCorto";
+            return "La contraseña es demasiado corta";
         }  else if (!usuario.getContrasena().matches(".*[a-zA-Z].*")) {
-            return "contrasenaSinCaracter";
+            return "Debes introducir como mínimo algún caracter en la contraseña";
         } else if (!usuario.getContrasena().matches(".*\\d.*")) {
-            return "contrasenaSinNumero";
+            return "Debes introducir como mínimo algún digito en la contraseña";
         } else if(usuario.getTelefono().length() < 9) {
-            return "telefono";
+            return "Has introducido de manera incorrecta el número de teléfono";
         } else if(!usuario.getGmail().contains("@")) {
-            return "gmailIncorrecto";
+            return "El formato de gmail es incorrecto";
         } else if (!usuario.getNacimiento().matches("\\d{4}-\\d{2}-\\d{2}")) {
-            return "nacimientoIncorrecto";
+            return "El formato de nacimiento es incorrecto (*año-mes-dia*)";
         } else{
             usuarios.AnadirUsuariosBD(usuario);
             new Menu();

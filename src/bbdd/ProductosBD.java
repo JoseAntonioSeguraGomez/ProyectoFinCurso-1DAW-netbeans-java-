@@ -26,5 +26,15 @@ public class ProductosBD {
             return null;
         }
     }
+    
+    public boolean eliminarProducto(String id) {
+        try {
+            conector.EjecutarUpdate( "DELETE FROM PRODUCTOS WHERE id = '" + id + "'");
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
 } 
 

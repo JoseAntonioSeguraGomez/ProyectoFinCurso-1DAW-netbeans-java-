@@ -185,8 +185,8 @@ public class MenuRoot extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAnadirActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        Eliminar eliminar = new Eliminar();
-        eliminar.setVisible(true);
+        new Eliminar();
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
