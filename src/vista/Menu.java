@@ -106,6 +106,8 @@ public class Menu extends javax.swing.JFrame {
         jLabel5.setText("Introduzca el nombre del usuario:");
         jLabel5.setToolTipText("");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 310, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\IconoContrase+¦a.png")); // NOI18N
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\IconoUsuario.png")); // NOI18N
