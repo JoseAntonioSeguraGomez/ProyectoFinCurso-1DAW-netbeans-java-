@@ -1,23 +1,25 @@
 package modelo;
 
 public class Producto {
-    private int id;
+    private String id;
     private String nombre;
     private String descripcion;
-    private String plataforma;
-    private double precio;
-    private int unidades;
+    private String genero;
+    private String categoria;
+    private String precio;
+    private String unidades;
     
-    public Producto(int id, String nombre, String descripcion, String plataforma, double precio, int unidades){
+    public Producto(String nombre, String descripcion, String genero,String categoria, String precio, String unidades){
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.plataforma = plataforma;
+        this.genero = genero;
+        this.categoria = categoria;
         this.precio = precio;
         this.unidades = unidades;
     }
     
-   public int getId(){
+   public String getId(){
        return id;
    }
 
@@ -35,29 +37,36 @@ public class Producto {
        this.descripcion = descripcion;
    }
    
-   public String getPlataforma(){
-       return plataforma;
+   public String getGenero(){
+       return genero;
    }
-   public void setPlataforma(String plataforma){
-       this.plataforma = plataforma;
+   public void setGenero(String genero){
+       this.genero = genero;
    }
    
-   public double getPrecio(){
+    public String getCategoria(){
+       return categoria;
+   }
+   public void setCategoria(String categoria){
+       this.categoria = categoria;
+   }
+   
+   public String getPrecio(){
        return precio;
    }
-   public void setPrecio(double precio){
+   public void setPrecio(String precio){
        this.precio = precio;
    }
    
-   public int getUnidades(){
+   public String getUnidades(){
        return unidades;
    }
-   public void setUnidades(int unidades){
+   public void setUnidades(String unidades){
        this.unidades = unidades;
    }
    
    @Override
    public String toString(){
-       return "ID:" + id + ", Nombre:" + nombre + ", Descripción:" + descripcion + ", Plataforma:" + plataforma + ", Precio:" + precio + ", Unidades:" + unidades;
+       return "ID:" + id + ", Nombre:" + nombre + ", Descripción:" + descripcion + ", Genero:" + genero +  ", Categoría:" + categoria + ", Precio:" + precio + ", Unidades:" + unidades;
    }
 }

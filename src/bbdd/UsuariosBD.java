@@ -11,20 +11,20 @@ import java.util.ArrayList;
         
 public class UsuariosBD {
     public void AnadirUsuariosBD(Usuario usuario){
-            String valor1 = usuario.getUsuario();
-            String valor2 = usuario.getContrasena();
-            String valor3 = usuario.getNombre();
-            String valor4 = usuario.getApellidos();
-            String valor5 = usuario.getNacimiento();
-            String valor6 = usuario.getTelefono();
-            String valor7 = usuario.getGmail();
-            String valor8 = usuario.getPais();
-            String valor9 = usuario.getProvincia();
-            String valor10 = usuario.getCiudad();
-            String valor11 = usuario.getFondos();
-            String valor12 = usuario.getRol();
+            String usuario1 = usuario.getUsuario();
+            String contrasena = usuario.getContrasena();
+            String nombre = usuario.getNombre();
+            String apellidos = usuario.getApellidos();
+            String nacimiento = usuario.getNacimiento();
+            String telefono = usuario.getTelefono();
+            String gmail = usuario.getGmail();
+            String pais = usuario.getPais();
+            String provincia = usuario.getProvincia();
+            String ciudad = usuario.getCiudad();
+            String fondos = usuario.getFondos();
+            String rol = usuario.getRol();
 
-        conector.EjecutarUpdate("INSERT INTO USUARIOS (USUARIO, CONTRASENA, NOMBRE, APELLIDOS, NACIMIENTO, TELEFONO, GMAIL, PAIS, PROVINCIA, CIUDAD, FONDOS, ROL) VALUES ('" + valor1 + "', '" + valor2 + "', '" + valor3 + "','" + valor4 + "','" + valor5 + "', '" + valor6 + "', '" + valor7 + "', '" + valor8 + "','" + valor9 + "','" + valor10 + "', '" + valor11 + "', '" + valor12 + "')");
+        conector.EjecutarUpdate("INSERT INTO USUARIOS (USUARIO, CONTRASENA, NOMBRE, APELLIDOS, NACIMIENTO, TELEFONO, GMAIL, PAIS, PROVINCIA, CIUDAD, FONDOS, ROL) VALUES ('" + usuario1 + "', '" + contrasena + "', '" + nombre + "','" + apellidos + "','" + nacimiento + "', '" + telefono + "', '" + gmail + "', '" + pais + "','" + provincia + "','" + ciudad + "', '" + fondos + "', '" + rol + "')");
 
     }
     
