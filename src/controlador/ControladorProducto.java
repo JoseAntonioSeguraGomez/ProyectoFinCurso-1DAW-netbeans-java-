@@ -42,5 +42,10 @@ public class ControladorProducto {
                 return "hecho";
             }
         }
+        
+        public String ActualizarProductos(Producto producto){
+            String existe = new ProductosBD().EditarProducto(producto);
+            return existe;
+        }
 
 }

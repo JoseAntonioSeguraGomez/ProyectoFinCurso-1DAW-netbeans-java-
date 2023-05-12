@@ -19,6 +19,16 @@ public class Producto {
         this.unidades = unidades;
     }
     
+    public Producto(String id,String nombre, String descripcion, String genero,String categoria, String precio, String unidades){
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.genero = genero;
+        this.categoria = categoria;
+        this.precio = precio;
+        this.unidades = unidades;
+    }
+    
    public String getId(){
        return id;
    }

@@ -67,6 +67,24 @@ public class ProductosBD {
             return null;
         }
     }
+    
+    public String EditarProducto(Producto producto){
+          try {
+            String id = producto.getId();
+            String nombre = producto.getNombre();
+            String descripcion = producto.getDescripcion();
+            String genero = producto.getGenero();
+            String categoria = producto.getCategoria();
+            String precio = producto.getPrecio();
+            String unidades = producto.getUnidades();
+            
+            conector.EjecutarUpdate("UPDATE productos SET nombre = '" + nombre + "', descripcion = '" + descripcion + "', genero = '" + genero + "', categoria = '" + categoria + "', precio = '" + precio + "', unidades = '" + unidades + "' WHERE id = " + id );
+            return "hecho";
+         }catch (Exception ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
 } 
 
