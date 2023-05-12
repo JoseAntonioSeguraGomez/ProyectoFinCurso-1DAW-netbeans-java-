@@ -9,10 +9,11 @@ public class ControladorUsuario {
     public String AnadirUsuarios(Usuario usuario){
         UsuariosBD usuarios = new UsuariosBD();
         String existe = usuarios.ExisteUsuario(usuario);
-        
+        String telefonoString = String.valueOf(usuario.getTelefono());
+
         if(existe != null){
             return "El usuario escrito ya existe, escriba otro";
-        }else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || usuario.getTelefono().equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
+        }else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || telefonoString.equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
             return "Alguno de los campos obigatorios está vacio";
         } else if(usuario.getUsuario().length() < 4) {
             return "El nombre del usuario es demasiado corto";
@@ -22,7 +23,7 @@ public class ControladorUsuario {
             return "Debes introducir como mínimo algún caracter en la contraseña";
         } else if (!usuario.getContrasena().matches(".*\\d.*")) {
             return "Debes introducir como mínimo algún digito en la contraseña";
-        } else if(usuario.getTelefono().length() < 9) {
+        } else if(telefonoString.length() < 9) {
             return "Has introducido de manera incorrecta el número de teléfono";
         } else if(!usuario.getGmail().contains("@")) {
             return "El formato de gmail es incorrecto";

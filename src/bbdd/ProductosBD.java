@@ -29,7 +29,7 @@ public class ProductosBD {
     
     public boolean eliminarProducto(String id) {
         try {
-            conector.EjecutarUpdate( "DELETE FROM PRODUCTOS WHERE id = '" + id + "'");
+            conector.EjecutarUpdate( "DELETE FROM PRODUCTOS WHERE id = " + id + "");
             return true;
         } catch (Exception ex) {
             return false;
@@ -40,9 +40,9 @@ public class ProductosBD {
             String nombre = producto.getNombre();
             String descripcion = producto.getDescripcion();
             String genero = producto.getGenero();
-            String categoria = producto.getCategoria();
-            String precio = producto.getPrecio();
-            String unidades = producto.getUnidades();
+            int categoria = producto.getCategoria();
+            float precio = producto.getPrecio();
+            int unidades = producto.getUnidades();
 
 
         conector.EjecutarUpdate("INSERT INTO PRODUCTOS (NOMBRE, DESCRIPCION, GENERO, CATEGORIA, PRECIO, UNIDADES) VALUES ('" + nombre + "', '" + descripcion + "', '" + genero + "','" + categoria + "','" + precio + "', '" + unidades + "')");
@@ -70,21 +70,84 @@ public class ProductosBD {
     
     public String EditarProducto(Producto producto){
           try {
-            String id = producto.getId();
+            int id = producto.getId();
             String nombre = producto.getNombre();
             String descripcion = producto.getDescripcion();
             String genero = producto.getGenero();
-            String categoria = producto.getCategoria();
-            String precio = producto.getPrecio();
-            String unidades = producto.getUnidades();
+            int categoria = producto.getCategoria();
+            float precio = producto.getPrecio();
+            int unidades = producto.getUnidades();
             
-            conector.EjecutarUpdate("UPDATE productos SET nombre = '" + nombre + "', descripcion = '" + descripcion + "', genero = '" + genero + "', categoria = '" + categoria + "', precio = '" + precio + "', unidades = '" + unidades + "' WHERE id = " + id );
+            conector.EjecutarUpdate("UPDATE productos SET nombre = '" + nombre + "', descripcion = '" + descripcion + "', genero = '" + genero + "', categoria = " + categoria + ", precio = " + precio + ", unidades = " + unidades + " WHERE id = " + id );
             return "hecho";
+            
          }catch (Exception ex){
             ex.printStackTrace();
             return null;
         }
     }
+    
+    public ArrayList<String[]> FiltrarContenido(String nombre){
+        try {
+            ArrayList<String[]> resultados = new ArrayList<>();
+            
+            ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM PRODUCTOS WHERE NOMBRE LIKE '%" + nombre + "%'");
 
+            while (resultado.next()) {
+            String[] fila = new String[7];
+                for (int i = 0; i < 7; i++) {
+                    fila[i] = resultado.getString(i + 1);
+                }
+            resultados.add(fila);
+         }
+            
+        return resultados;
+            
+        }catch (SQLException ex){
+            return null;
+        }
+    }
+    
+        public ArrayList<String[]> OrdenarPorFiltroMayor(String nombre){
+        try {
+            ArrayList<String[]> resultados = new ArrayList<>();
+            
+        ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM PRODUCTOS ORDER BY " + nombre + " DESC");
+
+            while (resultado.next()) {
+            String[] fila = new String[7];
+                for (int i = 0; i < 7; i++) {
+                    fila[i] = resultado.getString(i + 1);
+                }
+            resultados.add(fila);
+         }
+            
+        return resultados;
+            
+        }catch (SQLException ex){
+            return null;
+        }
+    }
+        
+    public ArrayList<String[]> OrdenarPorFiltroMenor(String nombre){
+        try {
+            ArrayList<String[]> resultados = new ArrayList<>();
+            
+        ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM PRODUCTOS ORDER BY " + nombre + " ASC");
+
+            while (resultado.next()) {
+            String[] fila = new String[7];
+                for (int i = 0; i < 7; i++) {
+                    fila[i] = resultado.getString(i + 1);
+                }
+            resultados.add(fila);
+         }
+            
+        return resultados;
+            
+        }catch (SQLException ex){
+            return null;
+        }
+    }
 } 
 

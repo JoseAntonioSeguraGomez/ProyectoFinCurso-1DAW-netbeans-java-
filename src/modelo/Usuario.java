@@ -6,15 +6,15 @@ public class Usuario {
    private String nombre;
    private String apellidos;
    private String nacimiento;
-   private String telefono;
+   private int telefono;
    private String gmail;
    private String pais;
    private String provincia;
    private String ciudad;
    private String rol;
-   private String fondos;
+   private float fondos;
    
-        public Usuario(String usuario, String contrasena, String nombre, String apellidos, String nacimiento, String telefono, String gmail, String pais, String provincia, String ciudad){
+        public Usuario(String usuario, String contrasena, String nombre, String apellidos, String nacimiento, int telefono, String gmail, String pais, String provincia, String ciudad){
             this.usuario = usuario;
             this.contrasena = contrasena;
             this.nombre = nombre;
@@ -26,7 +26,7 @@ public class Usuario {
             this.provincia = provincia;
             this.ciudad = ciudad;
             this.rol = "Cliente";
-            this.fondos = "0";
+            this.fondos = 0;
         }
         
         public Usuario(String usuario, String contrasena){
@@ -69,10 +69,10 @@ public class Usuario {
             this.nacimiento = nacimiento;
         }
 
-        public String getTelefono(){
+        public int getTelefono(){
             return telefono;
         }
-        public void setTelefono(String telefono){
+        public void setTelefono(int telefono){
             this.telefono = telefono;
         }
 
@@ -110,10 +110,10 @@ public class Usuario {
         public void setRol(String rol){
             this.rol = rol;
         }
-        public String getFondos(){
+        public float getFondos(){
             return fondos;
         }
-        public void setFondos(String fondos){
+        public void setFondos(float fondos){
             this.fondos = fondos;
         }
 

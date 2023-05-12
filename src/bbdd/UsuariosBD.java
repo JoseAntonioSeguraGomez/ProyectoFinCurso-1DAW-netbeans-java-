@@ -16,15 +16,15 @@ public class UsuariosBD {
             String nombre = usuario.getNombre();
             String apellidos = usuario.getApellidos();
             String nacimiento = usuario.getNacimiento();
-            String telefono = usuario.getTelefono();
+            int telefono = usuario.getTelefono();
             String gmail = usuario.getGmail();
             String pais = usuario.getPais();
             String provincia = usuario.getProvincia();
             String ciudad = usuario.getCiudad();
-            String fondos = usuario.getFondos();
+            double fondos = usuario.getFondos();
             String rol = usuario.getRol();
 
-        conector.EjecutarUpdate("INSERT INTO USUARIOS (USUARIO, CONTRASENA, NOMBRE, APELLIDOS, NACIMIENTO, TELEFONO, GMAIL, PAIS, PROVINCIA, CIUDAD, FONDOS, ROL) VALUES ('" + usuario1 + "', '" + contrasena + "', '" + nombre + "','" + apellidos + "','" + nacimiento + "', '" + telefono + "', '" + gmail + "', '" + pais + "','" + provincia + "','" + ciudad + "', '" + fondos + "', '" + rol + "')");
+        conector.EjecutarUpdate("INSERT INTO USUARIOS (USUARIO, CONTRASENA, NOMBRE, APELLIDOS, NACIMIENTO, TELEFONO, GMAIL, PAIS, PROVINCIA, CIUDAD, FONDOS, ROL) VALUES ('" + usuario1 + "', '" + contrasena + "', '" + nombre + "','" + apellidos + "','" + nacimiento + "', " + telefono + ", '" + gmail + "', '" + pais + "','" + provincia + "','" + ciudad + "', " + fondos + ", '" + rol + "')");
 
     }
     

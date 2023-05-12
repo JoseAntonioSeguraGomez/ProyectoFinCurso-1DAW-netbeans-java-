@@ -343,7 +343,7 @@ public class Registro extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String apellidos = txtApellidos.getText();
         String nacimiento = txtNacimiento.getText();
-        String telefono = txtTelefono.getText();
+        int telefono = Integer.parseInt(txtTelefono.getText());
         String gmail = txtGmail.getText();
         String pais = txtPais.getText();
         String provincia = txtProvincia.getText();

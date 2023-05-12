@@ -1,15 +1,15 @@
 package modelo;
 
 public class Producto {
-    private String id;
+    private int id;
     private String nombre;
     private String descripcion;
     private String genero;
-    private String categoria;
-    private String precio;
-    private String unidades;
+    private int categoria;
+    private float precio;
+    private int unidades;
     
-    public Producto(String nombre, String descripcion, String genero,String categoria, String precio, String unidades){
+    public Producto(String nombre, String descripcion, String genero,int categoria, float precio, int unidades){
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -19,7 +19,7 @@ public class Producto {
         this.unidades = unidades;
     }
     
-    public Producto(String id,String nombre, String descripcion, String genero,String categoria, String precio, String unidades){
+    public Producto(int id,String nombre, String descripcion, String genero,int categoria, float precio, int unidades){
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -29,7 +29,7 @@ public class Producto {
         this.unidades = unidades;
     }
     
-   public String getId(){
+   public int getId(){
        return id;
    }
 
@@ -54,24 +54,24 @@ public class Producto {
        this.genero = genero;
    }
    
-    public String getCategoria(){
+    public int getCategoria(){
        return categoria;
    }
-   public void setCategoria(String categoria){
+   public void setCategoria(int categoria){
        this.categoria = categoria;
    }
    
-   public String getPrecio(){
+   public float getPrecio(){
        return precio;
    }
-   public void setPrecio(String precio){
+   public void setPrecio(float precio){
        this.precio = precio;
    }
    
-   public String getUnidades(){
+   public int getUnidades(){
        return unidades;
    }
-   public void setUnidades(String unidades){
+   public void setUnidades(int unidades){
        this.unidades = unidades;
    }
    

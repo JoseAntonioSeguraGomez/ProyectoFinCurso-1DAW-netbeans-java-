@@ -6,26 +6,29 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import controlador.ControladorProducto;
 import java.awt.Component;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableCellRenderer;
 import modelo.Producto;
 
 
-public class MenuRoot extends javax.swing.JFrame {
 
+public class MenuRoot extends javax.swing.JFrame {
+    private DefaultTableModel modelo;
     
     
     public MenuRoot() {
         initComponents();
         cargarTabla();
+        iniciarComboBox();
         setLocationRelativeTo(null);
         setVisible(true);  
     }
     
     private void cargarTabla() {
         String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
-        DefaultTableModel modelo = new DefaultTableModel(null,nombresColumnas);
+        modelo = new DefaultTableModel(null,nombresColumnas);
         Tabla.setModel(modelo);
         modelo.setRowCount(0);
         
@@ -34,6 +37,23 @@ public class MenuRoot extends javax.swing.JFrame {
         //Tabla.setBackground(new Color(0,0,0,0));
                 
         ArrayList<String[]> productos = new ControladorProducto().obtenerDatos();
+         for (int i = 0; i < productos.size(); i++) {
+            modelo.addRow(productos.get(i));
+        }
+         
+         redimensionarTabla();
+    }
+    
+    private void cargarTablaConDatos(ArrayList<String[]> productos) {
+        String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+        modelo = new DefaultTableModel(null,nombresColumnas);
+        Tabla.setModel(modelo);
+        modelo.setRowCount(0);
+        
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+        //Tabla.setBackground(new Color(0,0,0,0));
+                
          for (int i = 0; i < productos.size(); i++) {
             modelo.addRow(productos.get(i));
         }
@@ -56,6 +76,23 @@ public class MenuRoot extends javax.swing.JFrame {
         Tabla.getColumnModel().getColumn(column).setPreferredWidth(width);
         }
     }
+    
+    public void iniciarComboBox(){
+        DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); 
+        comboBoxModel.addElement("ID");
+        comboBoxModel.addElement("Nombre");
+        comboBoxModel.addElement("Genero");
+        comboBoxModel.addElement("Categoria");
+        comboBoxModel.addElement("MayorPrecio");
+        comboBoxModel.addElement("MenorPrecio");
+        comboBoxModel.addElement("MayorUnidades");
+        comboBoxModel.addElement("MenorUnidades");
+
+
+
+        jComboBox1.setModel(comboBoxModel);
+        jComboBox1.setSelectedIndex(0);
+    }
             
             
     @SuppressWarnings("unchecked")
@@ -71,7 +108,7 @@ public class MenuRoot extends javax.swing.JFrame {
         btnEditar = new javax.swing.JButton();
         btnVerProductos = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jTextField1 = new javax.swing.JTextField();
+        txtFiltro = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
         btnAnadir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -163,12 +200,12 @@ public class MenuRoot extends javax.swing.JFrame {
         jPanel1.add(btnVerProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 130, 40));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 810, 10));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtFiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 90, 40));
+        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 90, 40));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -200,23 +237,27 @@ public class MenuRoot extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVerProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerProductosActionPerformed
-        cargarTabla();
+        String ordenar = (String) jComboBox1.getSelectedItem();
+
+        ArrayList<String[]> ordenar1 = new ControladorProducto().OrdenarProductos(ordenar);
+        cargarTablaConDatos(ordenar1);
 
     }//GEN-LAST:event_btnVerProductosActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         int fila = Tabla.getSelectedRow();
-        String id = this.Tabla.getValueAt(fila, 0).toString();
+        int id = Integer.parseInt(this.Tabla.getValueAt(fila, 0).toString());
         String nombre = this.Tabla.getValueAt(fila, 1).toString();
         String descripcion = this.Tabla.getValueAt(fila, 2).toString();
         String genero = this.Tabla.getValueAt(fila, 3).toString();
-        String categoria = this.Tabla.getValueAt(fila, 4).toString();
-        String precio = this.Tabla.getValueAt(fila, 5).toString();
-        String unidades = this.Tabla.getValueAt(fila, 6).toString();
+        int categoria = Integer.parseInt(this.Tabla.getValueAt(fila, 4).toString());
+        float precio = Float.parseFloat(this.Tabla.getValueAt(fila, 5).toString());
+        int unidades = Integer.parseInt(this.Tabla.getValueAt(fila, 6).toString());
 
         Producto producto = new Producto(id, nombre, descripcion, genero, categoria, precio, unidades);
         
         new controlador.ControladorProducto().ActualizarProductos(producto);
+        cargarTabla();
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -225,8 +266,10 @@ public class MenuRoot extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
-        Filtrar filtrar = new Filtrar();
-        filtrar.setVisible(true);
+        String nombre = txtFiltro.getText();
+        
+        ArrayList<String[]> productos = new ControladorProducto().MostrarFiltro(nombre);
+        cargarTablaConDatos(productos);
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -234,17 +277,18 @@ public class MenuRoot extends javax.swing.JFrame {
         new Menu();
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void txtFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltroActionPerformed
+
+    }//GEN-LAST:event_txtFiltroActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
-        Anadir anadir = new Anadir();
-        anadir.setVisible(true);
+        new Anadir();
+        cargarTabla();
+
     }//GEN-LAST:event_btnAnadirActionPerformed
 
 
@@ -261,6 +305,6 @@ public class MenuRoot extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
 }

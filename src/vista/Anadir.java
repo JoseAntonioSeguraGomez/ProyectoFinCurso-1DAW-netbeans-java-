@@ -4,6 +4,9 @@ import javax.swing.DefaultComboBoxModel;
 import modelo.Producto;
 import controlador.ControladorProducto;
 import javax.swing.JOptionPane;
+import vista.MenuRoot;
+import javax.swing.table.DefaultTableModel;
+
 
 public class Anadir extends javax.swing.JFrame {
 
@@ -25,6 +28,8 @@ public class Anadir extends javax.swing.JFrame {
         jComboBox1.setModel(comboBoxModel);
         jComboBox1.setSelectedIndex(0);
     }
+    
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -180,9 +185,9 @@ public class Anadir extends javax.swing.JFrame {
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
         String genero = txtGenero.getText();
-        String categoria = (String) jComboBox1.getSelectedItem();
-        String precio = txtPrecio.getText();
-        String unidades = txtUnidades.getText();
+        int categoria = Integer.parseInt((String) jComboBox1.getSelectedItem());
+        float precio = Float.parseFloat(txtPrecio.getText());
+        int unidades = Integer.parseInt(txtUnidades.getText());
 
         Producto producto = new Producto(nombre, descripcion, genero, categoria, precio, unidades);
         
@@ -194,6 +199,7 @@ public class Anadir extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
 
         }
+        
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
