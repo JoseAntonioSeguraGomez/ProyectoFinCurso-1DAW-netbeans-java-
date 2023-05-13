@@ -158,6 +158,7 @@ public class Menu extends javax.swing.JFrame {
         if (resultadoInicioSesion != null) {
             if (resultadoInicioSesion.equals("Cliente")) {
                 this.setVisible(false);
+                new MenuUsuario(usuario1);
             } else if (resultadoInicioSesion.equals("root")) {
                 this.setVisible(false);
                 new MenuRoot();
@@ -165,7 +166,7 @@ public class Menu extends javax.swing.JFrame {
                 jLabel8.setText("Las credenciales introducidas son incorrectas");
             }
         } else {
-jLabel8.setText("Las credenciales introducidas son incorrectas");
+                jLabel8.setText("Las credenciales introducidas son incorrectas");
         }
                 
         

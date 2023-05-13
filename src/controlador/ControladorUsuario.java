@@ -42,4 +42,23 @@ public class ControladorUsuario {
        
         return rol;
     }
+    
+    public Usuario recogerDatosUsuario(Usuario usuario){
+        String[] datos = new UsuariosBD().recogerDatos(usuario);
+        String usuarioNombre = datos[0];
+        String contrasena = datos[1];
+        String nombre = datos[2];
+        String apellidos = datos[3];
+        String nacimiento = datos[4];
+        int telefono = Integer.parseInt(datos[5]);
+        String gmail = datos[6];
+        String pais = datos[7];
+        String provincia = datos[8];
+        String ciudad = datos[9];
+        String rol = datos[10];
+        float fondos = Float.parseFloat(datos[11]);
+
+        Usuario usuario1 = new Usuario(usuarioNombre, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad, rol, fondos);
+        return usuario1;
+    }
 }

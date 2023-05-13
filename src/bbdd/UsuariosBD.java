@@ -34,7 +34,7 @@ public class UsuariosBD {
             String nombre = usuario.getUsuario();
             String contrasena = usuario.getContrasena();
 
-            ResultSet resultado = conector.EjecutarSentencia("SELECT ROL FROM USUARIOS WHERE NOMBRE = '" + nombre + "' AND CONTRASENA = '" + contrasena + "'");
+            ResultSet resultado = conector.EjecutarSentencia("SELECT ROL FROM USUARIOS WHERE USUARIO = '" + nombre + "' AND CONTRASENA = '" + contrasena + "'");
             
             if (resultado.next()) {
                 rol = resultado.getString("ROL");
@@ -59,6 +59,26 @@ public class UsuariosBD {
                 usuario1 = resultado.getString("USUARIO");
             }
 
+            return usuario1;
+        
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    public String[] recogerDatos(Usuario usuario){
+        try {
+            String[] usuario1 = new String[12];
+            String nombre = usuario.getNombre();
+
+            ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM USUARIOS WHERE USUARIO = '" + nombre + "'");
+            
+            if (resultado.next()) {
+              for (int i = 0; i < 12; i++) {
+                  usuario1[i] = resultado.getString(i + 1);
+              }
+            }
             return usuario1;
         
         }catch (SQLException ex){

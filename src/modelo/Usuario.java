@@ -29,6 +29,22 @@ public class Usuario {
             this.fondos = 0;
         }
         
+        public Usuario(String usuario, String contrasena, String nombre, String apellidos, String nacimiento, int telefono, String gmail, String pais, String provincia, String ciudad, String rol, float fondos){
+            this.usuario = usuario;
+            this.contrasena = contrasena;
+            this.nombre = nombre;
+            this.apellidos = apellidos;
+            this.nacimiento = nacimiento;
+            this.telefono = telefono;
+            this.gmail = gmail;
+            this.pais = pais;
+            this.provincia = provincia;
+            this.ciudad = ciudad;
+            this.rol = rol;
+            this.fondos = fondos;
+        }
+        
+        
         public Usuario(String usuario, String contrasena){
             this.usuario = usuario;
             this.contrasena = contrasena;
