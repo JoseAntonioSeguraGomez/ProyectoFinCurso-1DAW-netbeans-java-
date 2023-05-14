@@ -69,10 +69,13 @@ public class UsuariosBD {
     
     public String[] recogerDatos(Usuario usuario){
         try {
+            //Crear Array de datos
             String[] usuario1 = new String[12];
-            String nombre = usuario.getNombre();
+            
+            //Recoger el nombre del usuario
+            String usuarioNombre = usuario.getUsuario();
 
-            ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM USUARIOS WHERE USUARIO = '" + nombre + "'");
+            ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM USUARIOS WHERE USUARIO = '" + usuarioNombre + "'");
             
             if (resultado.next()) {
               for (int i = 0; i < 12; i++) {
@@ -86,6 +89,31 @@ public class UsuariosBD {
             return null;
         }
     }
+        public String[] recogerURL(Usuario usuario){
+        try {
+            //Crear Array de datos
+            String[] usuario1 = new String[13];
+            
+            //Recoger el nombre del usuario
+            String usuarioNombre = usuario.getUsuario();
+
+            ResultSet resultado = conector.EjecutarSentencia("SELECT * FROM USUARIOS WHERE USUARIO = '" + usuarioNombre + "'");
+            
+            if (resultado.next()) {
+              for (int i = 0; i < 13; i++) {
+                  usuario1[i] = resultado.getString(i + 1);
+              }
+                return usuario1;
+            }
+        
+            return null;
+            
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
 }
 
 /*

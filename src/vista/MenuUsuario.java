@@ -2,8 +2,13 @@ package vista;
 
 import controlador.*;
 import java.awt.Component;
+import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -22,6 +27,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         cargarTabla();
         iniciarComboBox();
         cargarElementosMenu();
+        obtenerFotoPerfil();
         setLocationRelativeTo(null);
         setVisible(true);  
     }
@@ -93,15 +99,38 @@ public class MenuUsuario extends javax.swing.JFrame {
     }
     
     public void cargarElementosMenu(){
-        Usuario usuarioMenu = new ControladorUsuario().recogerDatosUsuario(usuario);
+        //Crear un usuario que recoja todos los datos del usuario + contraseña introducidos.
+        Usuario usuarioMenu = new ControladorUsuario().recogerDatosUsuario(this.usuario);
+        
+        //Pasar los fondos a String
         double fondos = usuarioMenu.getFondos();
         String fondosString = Double.toString(usuarioMenu.getFondos());
         
+        //Establecer valores del dinero y nombre en el menu
         txtNombre.setText(usuarioMenu.getUsuario());
         txtDinero.setText(fondosString + " €");
 
     }
     
+    public void obtenerFotoPerfil(){
+        String urlImagen = new ControladorUsuario().recogerFoto(this.usuario);
+            try {
+                URL url = new URL(urlImagen);
+                ImageIcon icono = new ImageIcon(url);
+                Image imagen = icono.getImage();
+                Image imagenRedimensionada = imagen.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
+                ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+                btnFoto.setIcon(iconoRedimensionado);
+            } catch (MalformedURLException e) {
+                // La URL de la imagen es incorrecta
+                e.printStackTrace();
+            } catch (IOException e) {
+                // Error de conexión o carga de la imagen
+                e.printStackTrace();
+            }   
+        
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -123,7 +152,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnFoto = new javax.swing.JButton();
         txtDinero = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -252,9 +281,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 810, 10));
         jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 190, 20));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\imagenUsuario.png")); // NOI18N
-        jButton1.setText("   ");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 170, 160));
+        btnFoto.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\imagenUsuario.png")); // NOI18N
+        btnFoto.setText("   ");
+        jPanel1.add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 170, 160));
 
         txtDinero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtDinero.setForeground(new java.awt.Color(255, 255, 255));
@@ -361,7 +390,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnFactura;
     private javax.swing.JButton btnFiltrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnFoto;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

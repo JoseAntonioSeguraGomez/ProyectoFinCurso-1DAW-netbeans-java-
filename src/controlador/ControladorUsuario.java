@@ -44,7 +44,10 @@ public class ControladorUsuario {
     }
     
     public Usuario recogerDatosUsuario(Usuario usuario){
+        //Recoger los datos en un String
         String[] datos = new UsuariosBD().recogerDatos(usuario);
+        
+        //Desglosar Datos
         String usuarioNombre = datos[0];
         String contrasena = datos[1];
         String nombre = datos[2];
@@ -58,7 +61,20 @@ public class ControladorUsuario {
         String rol = datos[10];
         float fondos = Float.parseFloat(datos[11]);
 
+        //Crear Usuario
         Usuario usuario1 = new Usuario(usuarioNombre, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad, rol, fondos);
+        
+        //Devolver Usuario
         return usuario1;
+    }
+    
+    public String recogerFoto(Usuario usuario){
+        String[] datos = new UsuariosBD().recogerURL(usuario);
+        String url = datos[12];
+        if(url == null){
+            return "https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de.jpg?ver=6";
+        }else{
+            return url;
+        }
     }
 }
