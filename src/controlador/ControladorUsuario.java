@@ -77,4 +77,15 @@ public class ControladorUsuario {
             return url;
         }
     }
+    
+    public String establecerFoto(Usuario usuario, String url){
+        if(url.equals("")){
+            return "No has introducido ninguna url, por favor, introduzca una.";
+        } else if(url.length() < 44 ){
+            return "La url introducida es demasiado corta";
+        }else{
+            new UsuariosBD().establecerFoto(usuario, url);
+            return "hecho";
+        }
+    }
 }

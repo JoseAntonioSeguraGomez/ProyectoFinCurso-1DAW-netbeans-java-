@@ -44,7 +44,11 @@ public class MenuUsuario extends javax.swing.JFrame {
                 
         ArrayList<String[]> productos = new ControladorProducto().obtenerDatos();
          for (int i = 0; i < productos.size(); i++) {
-            modelo.addRow(productos.get(i));
+            if(productos.get(i)[6].equals("0")){
+                 
+            }else{
+                modelo.addRow(productos.get(i));
+            }
         }
          
          redimensionarTabla();
@@ -61,7 +65,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         //Tabla.setBackground(new Color(0,0,0,0));
                 
          for (int i = 0; i < productos.size(); i++) {
-            modelo.addRow(productos.get(i));
+            if(productos.get(i)[6].equals("0")){
+                 
+            }else{
+                modelo.addRow(productos.get(i));
+            }
         }
          
          redimensionarTabla();
@@ -118,7 +126,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 URL url = new URL(urlImagen);
                 ImageIcon icono = new ImageIcon(url);
                 Image imagen = icono.getImage();
-                Image imagenRedimensionada = imagen.getScaledInstance(180, 180, Image.SCALE_SMOOTH);
+                Image imagenRedimensionada = imagen.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
                 ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
                 btnFoto.setIcon(iconoRedimensionado);
             } catch (MalformedURLException e) {
@@ -128,8 +136,6 @@ public class MenuUsuario extends javax.swing.JFrame {
                 // Error de conexión o carga de la imagen
                 e.printStackTrace();
             }   
-        
-
     }
 
     @SuppressWarnings("unchecked")
@@ -283,6 +289,11 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         btnFoto.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\imagenUsuario.png")); // NOI18N
         btnFoto.setText("   ");
+        btnFoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFotoActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 170, 160));
 
         txtDinero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -366,6 +377,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         ArrayList<String[]> ordenar1 = new ControladorProducto().OrdenarProductos(ordenar);
         cargarTablaConDatos(ordenar1);
+        obtenerFotoPerfil();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -380,6 +392,11 @@ public class MenuUsuario extends javax.swing.JFrame {
     private void btnAnadirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFondosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAnadirFondosActionPerformed
+
+    private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+        new EditarURL(usuario);
+        
+    }//GEN-LAST:event_btnFotoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

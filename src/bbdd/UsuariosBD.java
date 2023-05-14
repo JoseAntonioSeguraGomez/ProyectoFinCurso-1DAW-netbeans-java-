@@ -89,7 +89,8 @@ public class UsuariosBD {
             return null;
         }
     }
-        public String[] recogerURL(Usuario usuario){
+    
+    public String[] recogerURL(Usuario usuario){
         try {
             //Crear Array de datos
             String[] usuario1 = new String[13];
@@ -112,6 +113,11 @@ public class UsuariosBD {
             ex.printStackTrace();
             return null;
         }
+    }
+        
+    public void establecerFoto(Usuario usuario, String url){
+        conector.EjecutarUpdate("UPDATE USUARIOS SET URL = '" + url + "' WHERE USUARIO = '" + usuario.getUsuario() + "'");
+
     }
     
 }

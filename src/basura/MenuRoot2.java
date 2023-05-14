@@ -1,4 +1,4 @@
-package vista;
+package basura;
 
 import basura.AnadirProducto;
 import javax.swing.*;
