@@ -1,16 +1,11 @@
 package bbdd;
 
 import modelo.Usuario;
-import java.sql.Statement;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.*; 
-import java.util.ArrayList;
         
 public class UsuariosBD {
-    public void AnadirUsuariosBD(Usuario usuario){
+    public void anadirUsuariosBD(Usuario usuario){
             String usuario1 = usuario.getUsuario();
             String contrasena = usuario.getContrasena();
             String nombre = usuario.getNombre();
@@ -28,7 +23,7 @@ public class UsuariosBD {
 
     }
     
-    public String ConsultarInicioSesion(Usuario usuario){
+    public String consultarInicioSesion(Usuario usuario){
         try {
             String rol = null;
             String nombre = usuario.getUsuario();
@@ -48,7 +43,7 @@ public class UsuariosBD {
         }
     }
     
-    public String ExisteUsuario(Usuario usuario){
+    public String existeUsuario(Usuario usuario){
          try {
             String usuario1 = null;
             String nombre = usuario.getUsuario();
@@ -117,6 +112,11 @@ public class UsuariosBD {
         
     public void establecerFoto(Usuario usuario, String url){
         conector.EjecutarUpdate("UPDATE USUARIOS SET URL = '" + url + "' WHERE USUARIO = '" + usuario.getUsuario() + "'");
+
+    }
+    
+    public void añadirFondos(Usuario usuario, float fondos){
+    conector.EjecutarUpdate("UPDATE USUARIOS SET FONDOS = FONDOS + " + fondos + " WHERE USUARIO = '" + usuario.getUsuario() + "'");
 
     }
     

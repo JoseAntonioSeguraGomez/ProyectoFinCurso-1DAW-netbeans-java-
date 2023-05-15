@@ -369,7 +369,17 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
-        // TODO add your handling code here:
+        int fila = Tabla.getSelectedRow();
+        int id = Integer.parseInt(this.Tabla.getValueAt(fila, 0).toString());
+        String nombre = this.Tabla.getValueAt(fila, 1).toString();
+        String descripcion = this.Tabla.getValueAt(fila, 2).toString();
+        String genero = this.Tabla.getValueAt(fila, 3).toString();
+        int categoria = Integer.parseInt(this.Tabla.getValueAt(fila, 4).toString());
+        float precio = Float.parseFloat(this.Tabla.getValueAt(fila, 5).toString());
+        int unidades = Integer.parseInt(this.Tabla.getValueAt(fila, 6).toString());
+
+        Producto producto = new Producto(id, nombre, descripcion, genero, categoria, precio, unidades);
+        
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -378,6 +388,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         ArrayList<String[]> ordenar1 = new ControladorProducto().OrdenarProductos(ordenar);
         cargarTablaConDatos(ordenar1);
         obtenerFotoPerfil();
+        cargarElementosMenu();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
@@ -390,7 +401,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnAnadirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFondosActionPerformed
-        // TODO add your handling code here:
+        new AnadirFondos(usuario);
     }//GEN-LAST:event_btnAnadirFondosActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed

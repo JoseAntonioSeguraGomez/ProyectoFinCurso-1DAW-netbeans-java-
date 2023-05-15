@@ -2,13 +2,7 @@ package controlador;
 
 import java.util.ArrayList;
 import bbdd.ProductosBD;
-import java.awt.Component;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.TableCellRenderer;
 import modelo.Producto;
-import vista.MenuRoot;
 
 public class ControladorProducto {
         public ArrayList<String[]> obtenerDatos(){
@@ -73,5 +67,6 @@ public class ControladorProducto {
             
             return null;
         }
+       
 
 }

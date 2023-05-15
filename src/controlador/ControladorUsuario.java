@@ -2,19 +2,26 @@ package controlador;
 
 import modelo.Usuario;
 import bbdd.UsuariosBD;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import modelo.Producto;
 import vista.*;
+
 
 public class ControladorUsuario {
     public String AnadirUsuarios(Usuario usuario){
         UsuariosBD usuarios = new UsuariosBD();
-        String existe = usuarios.ExisteUsuario(usuario);
+        String existe = usuarios.existeUsuario(usuario);
         String telefonoString = String.valueOf(usuario.getTelefono());
 
         if(existe != null){
             return "El usuario escrito ya existe, escriba otro";
         }else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || telefonoString.equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
-            return "Alguno de los campos obigatorios está vacio";
+            return "Alguno de los campos obigatorios estan vacios";
         } else if(usuario.getUsuario().length() < 4) {
             return "El nombre del usuario es demasiado corto";
         } else if(usuario.getContrasena().length() < 6) {
@@ -30,7 +37,7 @@ public class ControladorUsuario {
         } else if (!usuario.getNacimiento().matches("\\d{4}-\\d{2}-\\d{2}")) {
             return "El formato de nacimiento es incorrecto (*año-mes-dia*)";
         } else{
-            usuarios.AnadirUsuariosBD(usuario);
+            usuarios.anadirUsuariosBD(usuario);
             new Menu();
             return "hecho";
         }
@@ -38,7 +45,7 @@ public class ControladorUsuario {
     }  
     
     public String IniciarSesion(Usuario usuario) {
-        String rol = new UsuariosBD().ConsultarInicioSesion(usuario);
+        String rol = new UsuariosBD().consultarInicioSesion(usuario);
        
         return rol;
     }
@@ -88,4 +95,43 @@ public class ControladorUsuario {
             return "hecho";
         }
     }
+    
+    public void anadirFondos(Usuario usuario, float fondos){
+        new UsuariosBD().añadirFondos(usuario, fondos);
+    }
+    
+    public String realizarCompra(Usuario usuario, Producto producto){
+        Usuario usuario1 = recogerDatosUsuario(usuario);
+        
+        if(usuario1.getFondos() <= producto.getPrecio()){
+            return "No tienes suficientes fondos como para comprar dicho producto";
+        }else
+         return "pepe";
+    }
+    
+    public int devolverEdad(Usuario usuario) {
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaNacimiento = dateFormat.parse(usuario.getNacimiento());
+            Date fechaActual = new Date();
+
+            Calendar calFechaNacimiento = Calendar.getInstance();
+            calFechaNacimiento.setTime(fechaNacimiento);
+            Calendar calFechaActual = Calendar.getInstance();
+            calFechaActual.setTime(fechaActual);
+
+            int edad = calFechaActual.get(Calendar.YEAR) - calFechaNacimiento.get(Calendar.YEAR);
+
+            if (calFechaActual.get(Calendar.MONTH) < calFechaNacimiento.get(Calendar.MONTH)
+                    || (calFechaActual.get(Calendar.MONTH) == calFechaNacimiento.get(Calendar.MONTH)
+                    && calFechaActual.get(Calendar.DAY_OF_MONTH) < calFechaNacimiento.get(Calendar.DAY_OF_MONTH))) {
+                edad--;
+            }
+
+            return edad;
+        } catch (ParseException ex) {
+            return 0;
+        }
+    }
+    
 }
