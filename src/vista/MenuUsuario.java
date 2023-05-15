@@ -9,6 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -380,6 +381,10 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         Producto producto = new Producto(id, nombre, descripcion, genero, categoria, precio, unidades);
         
+        String resultado = new ControladorUsuario().realizarCompra(usuario, producto);
+        
+        JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
+
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

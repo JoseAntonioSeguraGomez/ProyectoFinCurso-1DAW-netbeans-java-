@@ -149,5 +149,9 @@ public class ProductosBD {
             return null;
         }
     }
+    
+    public void actualizarUnidades(Producto producto){
+        conector.EjecutarUpdate("UPDATE PRODUCTOS SET UNIDADES = " + producto.getUnidades() + " WHERE ID = " + producto.getId());
+    }
 } 
 

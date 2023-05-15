@@ -1,5 +1,6 @@
 package controlador;
 
+import bbdd.ProductosBD;
 import modelo.Usuario;
 import bbdd.UsuariosBD;
 import java.text.ParseException;
@@ -102,29 +103,48 @@ public class ControladorUsuario {
     
     public String realizarCompra(Usuario usuario, Producto producto){
         Usuario usuario1 = recogerDatosUsuario(usuario);
+        int edad = devolverEdad(usuario1);
         
         if(usuario1.getFondos() <= producto.getPrecio()){
-            return "No tienes suficientes fondos como para comprar dicho producto";
-        }else
-         return "pepe";
+            return "No tienes suficientes fondos como para comprar dicho producto.";
+        }else if(edad < producto.getCategoria()){
+            return "La categoria del producto no es adecuada para el usuario, pruebe con otro juego.";
+        }else{
+            usuario1.setFondos(usuario1.getFondos() - producto.getPrecio());
+            producto.setUnidades(producto.getUnidades()-1);
+            
+            new UsuariosBD().actualizarUsuario(usuario1);
+            new ProductosBD().actualizarUnidades(producto);
+            
+            return "El producto se ha comprado con exito";
+        }
     }
     
+    //Devolver EDAD
     public int devolverEdad(Usuario usuario) {
         try {
+            //FORMATO FECHA
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            
+            //Pasar la fecha de nacimiento al formato DATE dado
             Date fechaNacimiento = dateFormat.parse(usuario.getNacimiento());
+            
+            //Recoger fecha actual
             Date fechaActual = new Date();
-
+            
+            //Establece los datos anteriormente como un objecto calendar
             Calendar calFechaNacimiento = Calendar.getInstance();
             calFechaNacimiento.setTime(fechaNacimiento);
+            
+            //Crear un objecto calendar y obtener la fecha actual del sistema
             Calendar calFechaActual = Calendar.getInstance();
             calFechaActual.setTime(fechaActual);
 
+            //Recoger edad por el año
             int edad = calFechaActual.get(Calendar.YEAR) - calFechaNacimiento.get(Calendar.YEAR);
 
-            if (calFechaActual.get(Calendar.MONTH) < calFechaNacimiento.get(Calendar.MONTH)
-                    || (calFechaActual.get(Calendar.MONTH) == calFechaNacimiento.get(Calendar.MONTH)
-                    && calFechaActual.get(Calendar.DAY_OF_MONTH) < calFechaNacimiento.get(Calendar.DAY_OF_MONTH))) {
+            //Calcular edad segun el mes y dia
+            if (calFechaActual.get(Calendar.MONTH) < calFechaNacimiento.get(Calendar.MONTH) || (calFechaActual.get(Calendar.MONTH) == calFechaNacimiento.get(Calendar.MONTH) && calFechaActual.get(Calendar.DAY_OF_MONTH) < calFechaNacimiento.get(Calendar.DAY_OF_MONTH))) {
                 edad--;
             }
 

@@ -120,6 +120,10 @@ public class UsuariosBD {
 
     }
     
+    public void actualizarUsuario(Usuario usuario){
+    conector.EjecutarUpdate("UPDATE USUARIOS SET FONDOS = " + usuario.getFondos() + " WHERE USUARIO = '" + usuario.getUsuario() + "'");
+    
+    }
 }
 
 /*
