@@ -1,35 +1,44 @@
 package vista;
 
-import controlador.ControladorProducto;
 import controlador.ControladorUsuario;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
 public class Factura extends javax.swing.JFrame {
+    //Cargar usuario de inicio de sesión
     private Usuario usuario;
     private DefaultTableModel modelo;
     
     public Factura(Usuario usuario) {
-        initComponents();
         this.usuario = usuario;
+        
+        initComponents();
         cargarTabla();
         setLocationRelativeTo(null);
         setVisible(true);
     }
     
+    //Carga automaticamente los datos de la tabla
     private void cargarTabla() {
+        //Introduzco en un array el nombre de las columnas
         String[] nombresColumnas = {"Fecha", "Nombre", "Producto", "Genero", "Categoria", "Precio", "Codigo"};
+        
+        //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
+        
+        //Establecemos a la tabla el modelo y asignamos de forma predeterminada 0 filas
         Tabla.setModel(modelo);
         modelo.setRowCount(0);
         
+        //Asignamos a la tabla un fondo opaco
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-        //Tabla.setBackground(new Color(0,0,0,0));
-                
+        
+        //Recoge los datos de la factura en una Matriz
         ArrayList<String[]> productos = new ControladorUsuario().obtenerDatosFactura(usuario);
         
+        //Imprime cada fila del txt en las columnas correspondientes y las añade al modelo
          for (int i = 0; i < productos.size(); i++) {
             if(productos.get(i)[6].equals("0")){
                  
@@ -46,27 +55,15 @@ public class Factura extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        jButton8 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 550, 10));
-
-        jButton8.setBackground(new java.awt.Color(255, 0, 0));
-        jButton8.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir X.png")); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 30, 30));
 
         jLabel2.setFont(new java.awt.Font("Source Code Pro", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -119,7 +116,7 @@ public class Factura extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 540, 180));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\VentanaPeque+¦a.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VentanaPeque+¦a.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 310));
@@ -127,18 +124,14 @@ public class Factura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     private void TablaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablaPropertyChange
-            Tabla.getColumnModel().setColumnMargin(0);
+        //Quitar margenes
+        Tabla.getColumnModel().setColumnMargin(0);
     }//GEN-LAST:event_TablaPropertyChange
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Tabla;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

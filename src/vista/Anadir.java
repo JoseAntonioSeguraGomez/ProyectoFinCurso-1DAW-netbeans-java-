@@ -4,9 +4,6 @@ import javax.swing.DefaultComboBoxModel;
 import modelo.Producto;
 import controlador.ControladorProducto;
 import javax.swing.JOptionPane;
-import vista.MenuRoot;
-import javax.swing.table.DefaultTableModel;
-
 
 public class Anadir extends javax.swing.JFrame {
 
@@ -17,6 +14,7 @@ public class Anadir extends javax.swing.JFrame {
         setVisible(true);
     }
     
+    //Carga el ComboBox asignando los valores a elegir
     public void IniciarComboBox(){
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); 
         comboBoxModel.addElement("3");
@@ -25,11 +23,12 @@ public class Anadir extends javax.swing.JFrame {
         comboBoxModel.addElement("16");
         comboBoxModel.addElement("18");
 
+        //Establecer modelo inpuesto al comboBox
         jComboBox1.setModel(comboBoxModel);
+        
+        //Seleccionar de forma predeterminada la posicion 0
         jComboBox1.setSelectedIndex(0);
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,7 +43,6 @@ public class Anadir extends javax.swing.JFrame {
         txtUnidades = new javax.swing.JTextField();
         txtGenero = new javax.swing.JTextField();
         btnConfirmar = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -114,23 +112,13 @@ public class Anadir extends javax.swing.JFrame {
 
         btnConfirmar.setBackground(new java.awt.Color(51, 204, 0));
         btnConfirmar.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnConfirmar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Confirmar.png")); // NOI18N
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Confirmar.png"))); // NOI18N
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
             }
         });
         getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 40, 40));
-
-        btnCerrar.setBackground(new java.awt.Color(255, 0, 0));
-        btnCerrar.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnCerrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir X.png")); // NOI18N
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 40, 40));
 
         jLabel5.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -175,36 +163,39 @@ public class Anadir extends javax.swing.JFrame {
         });
         getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\VentanaPeque+¦a.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VentanaPeque+¦a.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        //Recoge los datos introducidos por el usuario
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
         String genero = txtGenero.getText();
+        
+        //Pasar de String a los valores adecuados
         int categoria = Integer.parseInt((String) jComboBox1.getSelectedItem());
         float precio = Float.parseFloat(txtPrecio.getText());
         int unidades = Integer.parseInt(txtUnidades.getText());
 
+        //Crear un nuevo producto con los datos recogidos
         Producto producto = new Producto(nombre, descripcion, genero, categoria, precio, unidades);
         
+        //Levar al controlador el producto para su correcta implementacion
         String resultado = new ControladorProducto().AnadirProducto(producto);
         
+        //En caso de que la implementacion ha sido correcta se cerrará la ventana
         if(resultado.equals("hecho")){
             this.setVisible(false);
+            
+        //Imprimira los fallos ocurridos a la hora de la implementación
         }else{
             JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
 
         }
-        
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
         // TODO add your handling code here:
@@ -222,19 +213,26 @@ public class Anadir extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    //Condiciones para que no se puedan añadir ciertos elementos
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        if(txtNombre.getText().length() == 50){
+        //Limitar el tamaño de escritura
+        
+        if(txtNombre.getText().length() == 20){
             evt.consume();
         }
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtDescripcionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyTyped
+        //Limitar el tamaño de escritura
+        
         if(txtDescripcion.getText().length() == 255){
             evt.consume();
         }
     }//GEN-LAST:event_txtDescripcionKeyTyped
 
     private void txtGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGeneroKeyTyped
+        //Limitar el tamaño de escritura y solo permita letras
+        
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -251,12 +249,16 @@ public class Anadir extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGeneroKeyTyped
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
-    if(txtUnidades.getText().length() == 5){
+        //Limitar el tamaño de escritura
+        
+        if(txtUnidades.getText().length() == 5){
             evt.consume();
         }
     }//GEN-LAST:event_txtPrecioKeyTyped
 
     private void txtUnidadesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUnidadesKeyTyped
+       //Limitar el tamaño de escritura y solo permite numeros
+        
         int key =evt.getKeyChar();
         
         boolean numeros = key >= 48 && key <= 57;
@@ -272,7 +274,6 @@ public class Anadir extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnConfirmar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

@@ -1,17 +1,25 @@
 package main;
 
+import basura.controlador;
 import bbdd.conector;
 import vista.*;
 import controlador.*;
 
 public class main extends controlador {
     public static void main(String[] args) {
+        //Conectar con la base de datos
         conector.Conectar();
+        
+        //Iniciar pantalla principal
         Inicio inicio = new Inicio();
+        
+        //Iniciar pantalla transicion
         InicioCarga inicioCarga = new InicioCarga();
 
+        //Mostrar Inicio
         inicio.setVisible(true);
 
+        //Establecer tiempos de carga para cada vista
         try {
             Thread.sleep(5000);
             inicio.setVisible(false);
@@ -21,6 +29,7 @@ public class main extends controlador {
             inicioCarga.setVisible(false);
             new Menu();
 
+        //Devolver excepcion en caso de fallo
         } catch (Exception ex){
             System.out.println(ex);
         }

@@ -11,7 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Period;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -22,13 +21,19 @@ import vista.*;
 
 public class ControladorUsuario {
     public String AnadirUsuarios(Usuario usuario){
+        //Crea una instancia de la clase UsuariosBD 
         UsuariosBD usuarios = new UsuariosBD();
+        
+        //Verificamos si el usuario ya existe 
         String existe = usuarios.existeUsuario(usuario);
+        
+        //Convierte el telefono en un String
         String telefonoString = String.valueOf(usuario.getTelefono());
 
+        //Verifica las diferentes condiciones que podrían surgir, en caso afirmativo devolvera un String con el error, si no se realizara la operación
         if(existe != null){
             return "El usuario escrito ya existe, escriba otro";
-        }else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || telefonoString.equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
+        } else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || telefonoString.equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
             return "Alguno de los campos obigatorios estan vacios";
         } else if(usuario.getUsuario().length() < 4) {
             return "El nombre del usuario es demasiado corto";
@@ -44,17 +49,17 @@ public class ControladorUsuario {
             return "El formato de gmail es incorrecto";
         } else if (!usuario.getNacimiento().matches("\\d{4}-\\d{2}-\\d{2}")) {
             return "El formato de nacimiento es incorrecto (*año-mes-dia*)";
-        } else{
+        } else {
+            //Si todas las condiciones se cumplen, se agrega el usuario a la base de datos
             usuarios.anadirUsuariosBD(usuario);
             new Menu();
             return "hecho";
         }
-
-    }  
+    } 
     
+    //Verificar si el usuario introducido es correcto
     public String IniciarSesion(Usuario usuario) {
         String rol = new UsuariosBD().consultarInicioSesion(usuario);
-       
         return rol;
     }
     
@@ -83,9 +88,13 @@ public class ControladorUsuario {
         return usuario1;
     }
     
+    
+    //Recoger la url de la imagen del ususario
     public String recogerFoto(Usuario usuario){
         String[] datos = new UsuariosBD().recogerURL(usuario);
         String url = datos[12];
+        
+        //En caso de no tener establecera una imagen predeterminada
         if(url == null){
             return "https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de.jpg?ver=6";
         }else{
@@ -93,7 +102,9 @@ public class ControladorUsuario {
         }
     }
     
+    //Establecer una foto nueva al usuario
     public String establecerFoto(Usuario usuario, String url){
+        //Si se envia una url vacia devuelve un error, en caso de ser muy corto igual, en caso de exito devuelve un "hecho"
         if(url.equals("")){
             return "No has introducido ninguna url, por favor, introduzca una.";
         } else if(url.length() < 44 ){
@@ -105,7 +116,10 @@ public class ControladorUsuario {
     }
     
     public String anadirFondos(Usuario usuario, float fondos){
+        //Recoge los datos del usuario
         Usuario usuario1 = recogerDatosUsuario(usuario);
+        
+        //Si el usuario tiene mas de 900E devuelve un error
         if(usuario1.getFondos() >= 900){
             return "Su cartera ya ha alcanzado el limite";
         }else{
@@ -115,20 +129,32 @@ public class ControladorUsuario {
     }
     
     public String realizarCompra(Usuario usuario, Producto producto){
+        //Recogemos los datos del usuario
         Usuario usuario1 = recogerDatosUsuario(usuario);
+
+        //Obtenemos la edad del usuario
         int edad = devolverEdad(usuario1);
-        
+
+        //Se verifica si el usuario tiene suficientes fondos
         if(usuario1.getFondos() <= producto.getPrecio()){
             return "No tienes suficientes fondos como para comprar dicho producto.";
-        }else if(edad < producto.getCategoria()){
+        }
+        //Se verifica si el ususario tiene suficiente edad
+        else if(edad < producto.getCategoria()){
             return "La categoria del producto no es adecuada para el usuario, pruebe con otro juego.";
-        }else{
+        }
+        else{
+            //Actualizamos los fondos del usuario y las unidades del producto
             usuario1.setFondos(usuario1.getFondos() - producto.getPrecio());
             producto.setUnidades(producto.getUnidades()-1);
             System.out.println(usuario1.getFondos());
+
+            //Actualizamos el usuario en la base de datos
             new UsuariosBD().actualizarUsuario(usuario1);
+
+            //Actualizamos las unidades del producto en la base de datos
             new ProductosBD().actualizarUnidades(producto);
-            
+
             //Añadir datos de la compra a la factura
             String nombreFichero = "src/facturas/" + usuario1.getUsuario() + ".txt";
             
@@ -214,30 +240,41 @@ public class ControladorUsuario {
     }
     
     public ArrayList<String[]> obtenerDatosFactura(Usuario usuario){
+        //Establece el nombre del fichero con el nombre del ususario
         String nombreFichero = "src/facturas/" + usuario.getUsuario() + ".txt";
-        
+
+        //Crea un objeto File para la factura
         File fichero = new File(nombreFichero);
+
+        //Verificamos si el archivo de factura existe
         if (fichero.exists()) {
             try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
+                //Crea un ArrayList para almacenar los datos de la factura
                 ArrayList<String[]> datos = new ArrayList<>();
+
+                //Lee el archivo de factura línea por línea
                 String linea;
                 while ((linea = br.readLine()) != null) {
+                    //Separa cada línea en campos utilizando el delimitador "|"
                     String[] fila = linea.split("\\|");
+
+                    //Agregamos la fila de datos al ArrayList
                     datos.add(fila);
                 }
-                
+
+                //Devolvemos el ArrayList con los datos de la factura
                 return datos;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
-            
-        }else {
+        } else {
+            //Si el archivo de factura no existe se devuelve null
             return null;
         }
-        
+
+        // Si ocurre algún error se devuelve null
         return null;
-    }  
+    }
 
     
 }

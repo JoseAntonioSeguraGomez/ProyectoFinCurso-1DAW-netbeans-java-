@@ -3,7 +3,6 @@ package vista;
 import controlador.*;
 import java.awt.Component;
 import java.awt.Image;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -32,64 +31,95 @@ public class MenuUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);  
     }
-
+    
+    //Cargamos los elementos de la tabla
     private void cargarTabla() {
+        //Introduzco en un array el nombre de las columnas
         String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+
+        //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
+
+        //Establecemos a la tabla el modelo y asignamos de forma predeterminada 0 filas
         Tabla.setModel(modelo);
         modelo.setRowCount(0);
-        
+
+        //Asignamos a la tabla un fondo opaco
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-        //Tabla.setBackground(new Color(0,0,0,0));
-                
+
+        //Recoge los datos de la tabla productos
         ArrayList<String[]> productos = new ControladorProducto().obtenerDatos();
          for (int i = 0; i < productos.size(); i++) {
-            if(productos.get(i)[6].equals("0")){
+             //Si las unidades son 0 entonces no imprimira nada
+             if(productos.get(i)[6].equals("0")){
                  
             }else{
                 modelo.addRow(productos.get(i));
             }
         }
-         
+
+         //Llama a redimensionar Tabla
+         redimensionarTabla();
     }
     
+    //Cargamos los elementos de la tabla con unos datos en concreto
     private void cargarTablaConDatos(ArrayList<String[]> productos) {
+        //Introduzco en un array el nombre de las columnas
         String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+        
+        //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
         Tabla.setModel(modelo);
         modelo.setRowCount(0);
         
+        //Establecemos a la tabla el modelo y asignamos de forma predeterminada 0 filas
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-        //Tabla.setBackground(new Color(0,0,0,0));
                 
+        //Recoge los datos a la tabla productos
          for (int i = 0; i < productos.size(); i++) {
-            if(productos.get(i)[6].equals("0")){
+             //Si las unidades son 0 entonces no imprimira nada
+             if(productos.get(i)[6].equals("0")){
                  
             }else{
                 modelo.addRow(productos.get(i));
             }
         }
          
+         redimensionarTabla();
     }
     
-    /*private void redimensionarTabla() {
+    //Permite ajustar la anchura de las columnas en proporción al contenido
+    private void redimensionarTabla() {
+        //Se crea un objeto para personalizar las celdas
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        
+        //Alinear el texto a la izquierda
         renderer.setHorizontalAlignment(SwingConstants.LEFT);
+        
+        //Establecer un render
         Tabla.setDefaultRenderer(Object.class, renderer);
+        
+        //Se le asigna a la tabla un render automatico
         Tabla.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        
+        //Establecer el ancho de la tabla
             for(int column = 0; column < Tabla.getColumnCount(); column++) {
                 int width = 108; // Ancho predeterminado de la columna
+                
+                //Pasa por cada fila de la columna
                 for (int row = 0; row < Tabla.getRowCount(); row++) {
                     TableCellRenderer cellRenderer = Tabla.getCellRenderer(row, column);
                     Component comp = Tabla.prepareRenderer(cellRenderer, row, column);
                     width = Math.max(comp.getPreferredSize().width + 10, width);
                 }
+        //Se asigna el ancho a cada columna
         Tabla.getColumnModel().getColumn(column).setPreferredWidth(width);
         }
-    }*/
+    }
     
+    //Asignar valores al ComboBox
     public void iniciarComboBox(){
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); 
         comboBoxModel.addElement("ID");
@@ -100,8 +130,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         comboBoxModel.addElement("MenorPrecio");
         comboBoxModel.addElement("MayorUnidades");
         comboBoxModel.addElement("MenorUnidades");
-
+        
+        //Establecer al ComboBox el modelo anteriormente asignado
         jComboBox1.setModel(comboBoxModel);
+        
+        //Posicionarse al primer elemento
         jComboBox1.setSelectedIndex(0);
     }
     
@@ -129,13 +162,19 @@ public class MenuUsuario extends javax.swing.JFrame {
     }
     
     public void obtenerFotoPerfil(){
+        //LLama al controlador para recoger el foto de perfil relacionada al usuario
         String urlImagen = new ControladorUsuario().recogerFoto(this.usuario);
             try {
+                //Establecer un nuevo objecto llamado url con la url
                 URL url = new URL(urlImagen);
                 ImageIcon icono = new ImageIcon(url);
                 Image imagen = icono.getImage();
+                
+                //Redimensionar la imagen
                 Image imagenRedimensionada = imagen.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
                 ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
+                
+                //Establecer imagen
                 btnFoto.setIcon(iconoRedimensionado);
             } catch (MalformedURLException e) {
                 // La URL de la imagen es incorrecta
@@ -204,7 +243,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 810, 370));
 
         btnFiltrar.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
-        btnFiltrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Lupa.png")); // NOI18N
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Lupa.png"))); // NOI18N
         btnFiltrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,7 +271,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         btnComprar.setBackground(new java.awt.Color(0, 255, 204));
         btnComprar.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
-        btnComprar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\comprar.png")); // NOI18N
+        btnComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/comprar.png"))); // NOI18N
         btnComprar.setText(" Comprar");
         btnComprar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnComprar.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +283,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         btnAnadirFondos.setBackground(new java.awt.Color(0, 255, 204));
         btnAnadirFondos.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
-        btnAnadirFondos.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\AnadirPequeño.png")); // NOI18N
+        btnAnadirFondos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/anadir.png"))); // NOI18N
         btnAnadirFondos.setText("Añadir Fondos");
         btnAnadirFondos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAnadirFondos.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +295,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         btnFactura.setBackground(new java.awt.Color(0, 255, 204));
         btnFactura.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
-        btnFactura.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\factura.png")); // NOI18N
+        btnFactura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/factura.png"))); // NOI18N
         btnFactura.setText("Ver Facturas");
         btnFactura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +306,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel1.add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 150, 40));
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 0, 0));
-        btnCerrarSesion.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
+        btnCerrarSesion.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesión");
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +317,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel1.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, 170, 30));
 
         btnActualizar.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
-        btnActualizar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\actualizar.png")); // NOI18N
+        btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
         btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -336,7 +375,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel7.setText("Fondos:");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, 70, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\MenuUsuario.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuUsuario.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1150, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -364,9 +403,13 @@ public class MenuUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
+        //Recoge el contenido del filtro
         String nombre = txtFiltro.getText();
 
+        //Llama al controlador con los datos de la tabla filtrada
         ArrayList<String[]> productos = new ControladorProducto().MostrarFiltro(nombre);
+        
+        //Carga la tabla filtrada
         cargarTablaConDatos(productos);
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
@@ -379,6 +422,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
+        //Recoge los datos de la fila la cual deseé comprar
         int fila = Tabla.getSelectedRow();
         int id = Integer.parseInt(this.Tabla.getValueAt(fila, 0).toString());
         String nombre = this.Tabla.getValueAt(fila, 1).toString();
@@ -388,39 +432,53 @@ public class MenuUsuario extends javax.swing.JFrame {
         float precio = Float.parseFloat(this.Tabla.getValueAt(fila, 5).toString());
         int unidades = Integer.parseInt(this.Tabla.getValueAt(fila, 6).toString());
 
+        //Crea un producto con los datos recogidos
         Producto producto = new Producto(id, nombre, descripcion, genero, categoria, precio, unidades);
         
+        //LLama al controlador dando el usuario y producto a comprar
         String resultado = new ControladorUsuario().realizarCompra(usuario, producto);
         
+        //Envia una alerta en caso de fallo o exito
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+        //Recoge el dato seleccionado por el usuario
         String ordenar = (String) jComboBox1.getSelectedItem();
 
+        //Recoge la tabla filtrada
         ArrayList<String[]> ordenar1 = new ControladorProducto().OrdenarProductos(ordenar);
+        
+        //Carga la tabla con los datos
         cargarTablaConDatos(ordenar1);
+        
+        //Carga la foto de perfil
         obtenerFotoPerfil();
+        
+        //Carga los elementos por pantalla
         cargarElementosMenu();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        //Abre la vista Menu y cierra la actual
         this.setVisible(false);
         new Menu();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
+        //Abre la vista factura
         new Factura(usuario);
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnAnadirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFondosActionPerformed
+        //Abre la vista Anadir
         new AnadirFondos(usuario);
     }//GEN-LAST:event_btnAnadirFondosActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
+        //Abre la vista editar
         new EditarURL(usuario);
-        
     }//GEN-LAST:event_btnFotoActionPerformed
 
 

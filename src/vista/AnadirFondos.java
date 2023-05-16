@@ -6,16 +6,19 @@ import javax.swing.JOptionPane;
 import modelo.Usuario;
 
 public class AnadirFondos extends javax.swing.JFrame {
+    //Creamos usuario que recibira del Inicio de Sesión
     private Usuario usuario;
     
     public AnadirFondos(Usuario usuario) {
-        initComponents();
         this.usuario = usuario;
+        
+        initComponents();
         setLocationRelativeTo(null);
         iniciarComboBox();
         setVisible(true);
     }
     
+    //Asignar valores al ComboBox
     public void iniciarComboBox(){
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); 
         comboBoxModel.addElement("5");
@@ -24,11 +27,12 @@ public class AnadirFondos extends javax.swing.JFrame {
         comboBoxModel.addElement("50");
         comboBoxModel.addElement("100");
 
+        //Establecer al ComboBox el modelo anteriormente asignado
         jComboBox1.setModel(comboBoxModel);
+        
+        //Posicionarse al primer elemento
         jComboBox1.setSelectedIndex(0);
     }
-    
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,7 +40,6 @@ public class AnadirFondos extends javax.swing.JFrame {
 
         jSeparator1 = new javax.swing.JSeparator();
         btnConfirmar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -49,23 +52,13 @@ public class AnadirFondos extends javax.swing.JFrame {
 
         btnConfirmar.setBackground(new java.awt.Color(51, 204, 0));
         btnConfirmar.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnConfirmar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Confirmar.png")); // NOI18N
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Confirmar.png"))); // NOI18N
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
             }
         });
         getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 40, 40));
-
-        btnSalir.setBackground(new java.awt.Color(255, 0, 0));
-        btnSalir.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir X.png")); // NOI18N
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 220, 40, 40));
 
         jLabel5.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -86,32 +79,30 @@ public class AnadirFondos extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 380, 20));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\VentanaPeque+¦a.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VentanaPeque+¦a.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Botón de confirmar
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        //Recoger el la selección del usuario y pasarlo a float
         float fondos = Float.parseFloat((String) jComboBox1.getSelectedItem());
+        
+        //Se envia al controlador el usuario y los fondos que se le añadiran
         String resultado = new ControladorUsuario().anadirFondos(usuario, fondos);
             
+        //Se cierra la ventana
         this.setVisible(false);
 
+        //Se muestra un panel donde se muestra el resultado sea correcto o no la transacción
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
-
 
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.setVisible(false);
-        
-    }//GEN-LAST:event_btnSalirActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

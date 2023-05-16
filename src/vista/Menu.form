@@ -137,7 +137,7 @@
               <Font name="Source Code Pro Black" size="12" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\joans\Desktop\Imagenes\Salir.png"/>
+              <Image iconType="3" name="/Imagenes/Salir.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="EXIT"/>
           </Properties>
@@ -185,7 +185,7 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\joans\Desktop\Imagenes\QR.png"/>
+              <Image iconType="3" name="/Imagenes/QR.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -214,7 +214,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\joans\Desktop\Imagenes\IconoContrase+&#xa6;a.png"/>
+              <Image iconType="3" name="/Imagenes/IconoContrase+&#xa6;a.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -226,7 +226,7 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\joans\Desktop\Imagenes\IconoUsuario.png"/>
+              <Image iconType="3" name="/Imagenes/IconoUsuario.png"/>
             </Property>
           </Properties>
           <Constraints>
@@ -241,7 +241,7 @@
               <Font name="Segoe UI" size="18" style="0"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\joans\Desktop\Imagenes\IniciarSesion.jpg"/>
+              <Image iconType="3" name="/Imagenes/IniciarSesion.jpg"/>
             </Property>
           </Properties>
           <Constraints>

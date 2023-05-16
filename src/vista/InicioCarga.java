@@ -1,20 +1,21 @@
 package vista;
 
-import java.io.File;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class InicioCarga extends javax.swing.JFrame {
-
+    //Iniciar carga
     public InicioCarga() {
         initComponents();
         setLocationRelativeTo(null);
+        cargarImagenFondo();
     }
 
-
+    //Carga la ruta del gif de fondo
+    public void cargarImagenFondo(){
+        Icon icono = new ImageIcon("src/Imagenes/Transicion.gif");
+        jLabel1.setIcon(icono);  
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -26,8 +27,6 @@ public class InicioCarga extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setPreferredSize(new java.awt.Dimension(820, 480));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Transicion.gif")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -54,25 +53,6 @@ public class InicioCarga extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    public static void main(String args[]) {
- 
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new InicioCarga().setVisible(true);
-                /*try {
-                    File archivoDeSonido = new File("C:\\Users\\joans\\Desktop\\Imagenes\\Transicion.wav");
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(AudioSystem.getAudioInputStream(archivoDeSonido));
-                    clip.start();
-                    Thread.sleep(clip.getMicrosecondLength() / 1000);
-                } catch (Exception e) {
-                e.printStackTrace();
-                }*/
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

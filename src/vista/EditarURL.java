@@ -5,11 +5,13 @@ import javax.swing.JOptionPane;
 import modelo.Usuario;
 
 public class EditarURL extends javax.swing.JFrame {
+    //Llamamos al usuario que realizo el Inicio de sesión
     private Usuario usuario;
     
     public EditarURL(Usuario usuario) {
-        initComponents();
         this.usuario = usuario;
+        
+        initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -26,17 +28,16 @@ public class EditarURL extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 550, 10));
-        getContentPane().add(txtURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 370, 20));
+        getContentPane().add(txtURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 370, 20));
 
         btnConfirmar.setBackground(new java.awt.Color(51, 204, 0));
         btnConfirmar.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnConfirmar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Confirmar.png")); // NOI18N
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Confirmar.png"))); // NOI18N
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
@@ -47,7 +48,7 @@ public class EditarURL extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("URL:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -62,28 +63,21 @@ public class EditarURL extends javax.swing.JFrame {
         jLabel5.setText("Cambiar foto de perfil:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 480, 30));
 
-        btnSalir.setBackground(new java.awt.Color(255, 0, 0));
-        btnSalir.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnSalir.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir X.png")); // NOI18N
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 40, 40));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\VentanaPeque+¦a.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VentanaPeque+¦a.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Botón confirmar
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        this.setVisible(false);
+        //Se recoge la url introducida por el usuario
         String url = txtURL.getText();
         
+        //Se envia al controlador la URL y el usuario al que se le va a asignar
         String resultado = new ControladorUsuario().establecerFoto(usuario, url);
         
+        //En caso de realizar una correcta implementación se cerrará la vista, en caso contrario se imprime la alerta
         if (resultado.equals("hecho")){
             this.setVisible(false);
         }else{
@@ -91,13 +85,8 @@ public class EditarURL extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_btnSalirActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

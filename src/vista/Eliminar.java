@@ -5,7 +5,7 @@ import controlador.ControladorProducto;
 
 public class Eliminar extends javax.swing.JFrame {
 
-
+    //Inicializar componentes
     public Eliminar() {
         initComponents();
         setLocationRelativeTo(null);
@@ -20,13 +20,11 @@ public class Eliminar extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         btnConfirmar = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
         btnClick = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 160, 20));
@@ -34,23 +32,13 @@ public class Eliminar extends javax.swing.JFrame {
 
         btnConfirmar.setBackground(new java.awt.Color(51, 204, 0));
         btnConfirmar.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        btnConfirmar.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Confirmar.png")); // NOI18N
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Confirmar.png"))); // NOI18N
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConfirmarActionPerformed(evt);
             }
         });
         getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 40, 40));
-
-        jButton8.setBackground(new java.awt.Color(255, 0, 0));
-        jButton8.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Salir X.png")); // NOI18N
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 40, 40));
 
         btnClick.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
         btnClick.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,7 +61,7 @@ public class Eliminar extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 480, 30));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\VentanaPeque+¦a.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VentanaPeque+¦a.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -83,17 +71,19 @@ public class Eliminar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnClickActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_jButton8ActionPerformed
-
+    //Botón confirmar
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String id = txtID.getText();
+        //Recoger id y pasarlo a integer
+        int id = Integer.parseInt(txtID.getText());
+        
+        //Recoger la selección del usuario
         boolean confirmado = btnClick.isSelected();
         
+        //En caso de que el usuario haya dado click se eliminará el producto, en caso contrario saltará una alerta
         if (confirmado == true) {
            String resultado = new ControladorProducto().eliminarProducto(id);
             
+           //En caso de un error (id incorrecto) saltará un mensaje de error, en caso contrario cerrará la vista
            if(resultado.equals("error")){
                  JOptionPane.showMessageDialog(null, "La id introducida es incorrecta", "Alerta", JOptionPane.WARNING_MESSAGE);
            }else{
@@ -108,7 +98,6 @@ public class Eliminar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton btnClick;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

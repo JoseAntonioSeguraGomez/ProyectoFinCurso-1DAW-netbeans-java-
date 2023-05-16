@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Registro extends javax.swing.JFrame {
 
+    //Inicializar componentes
     public Registro() {
         initComponents();
         setLocationRelativeTo(null);
@@ -45,11 +46,20 @@ public class Registro extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        txtAlerta = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1158, 654));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setPreferredSize(new java.awt.Dimension(1158, 654));
@@ -151,7 +161,7 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Gmail:");
+        jLabel12.setText("Email:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 50, 20));
 
         txtGmail.addActionListener(new java.awt.event.ActionListener() {
@@ -275,7 +285,56 @@ public class Registro extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("REGISTRARSE");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 240, 40));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 710, 70));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 190, 710, 10));
+
+        txtAlerta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtAlerta.setForeground(new java.awt.Color(255, 0, 0));
+        jPanel1.add(txtAlerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 390, 30));
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setText("*");
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 10, 40));
+
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setText("*");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 10, 40));
+
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setText("*");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 10, 40));
+
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("*");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 10, 40));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("*");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 236, 10, 30));
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setText("*");
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 10, 40));
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel21.setText("*");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 236, 10, 30));
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("*");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 270, 10, 40));
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("*");
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 10, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Registro.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -325,56 +384,65 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCiudadActionPerformed
 
+    //Volver a la ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.setVisible(false);
-        Menu menu = new Menu();
-        menu.setVisible(true);
-        
+        new Menu();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    //Botón de registro
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+        //Recogemos todos los datos introducidos por el usuario
         String usuario = txtUsuario.getText();
         String contrasena = txtContrasena.getText();
         String nombre = txtNombre.getText();
         String apellidos = txtApellidos.getText();
         String nacimiento = txtNacimiento.getText();
-        int telefono = 0;
-        if(txtTelefono.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "El campo teléfono está vacio", "Alerta", JOptionPane.WARNING_MESSAGE);
-        }else{
-            telefono = Integer.parseInt(txtTelefono.getText());
-        }
         String gmail = txtGmail.getText();
         String pais = txtPais.getText();
         String provincia = txtProvincia.getText();
         String ciudad = txtCiudad.getText();
         
-        Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
-
-        String resultado = new ControladorUsuario().AnadirUsuarios(usuario1);
-        
-        if(resultado.equals("hecho")){
-            this.setVisible(false);
+        //Se comprueba primeramente que el campo telefono este relleno para futuras verificaciones
+        int telefono = 0;
+        if(txtTelefono.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "El campo teléfono está vacio", "Alerta", JOptionPane.WARNING_MESSAGE);
         }else{
-            JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
+            telefono = Integer.parseInt(txtTelefono.getText());
+            
+            //Crea un nuevo usuario con los datos introducidos
+            Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
 
+            //Se envia al controlador para que verifique que todos los datos son correctos
+            String resultado = new ControladorUsuario().AnadirUsuarios(usuario1);
+
+            //Se comprueba si el usuario es correcto, en caso afirmativo se cierra la ventana y en caso negativo se notifica una alerta
+            if(resultado.equals("hecho")){
+                this.setVisible(false);
+            }else{
+                txtAlerta.setText(resultado);
+            }
         }
         
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
+    //Comprobaciones sobre que caracteres se deben poner en todos los txt
     private void txtUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyTyped
+        //No podra exceder los 20 caracteres
         if(txtUsuario.getText().length() == 20){
             evt.consume();
         }
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
     private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
+        //No podra exceder los 20 caracteres
         if(txtContrasena.getText().length() == 20){
             evt.consume();
         }
     }//GEN-LAST:event_txtContrasenaKeyTyped
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        //Solo podra escribir caracteres y no digitos
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -391,6 +459,8 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidosKeyTyped
+        //Solo podra escribir caracteres y no digitos
+
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -407,13 +477,16 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtApellidosKeyTyped
 
     private void txtNacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNacimientoKeyTyped
+
         if(txtNacimiento.getText().length() == 20){
             evt.consume();
         }
     }//GEN-LAST:event_txtNacimientoKeyTyped
 
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
-         int key =evt.getKeyChar();
+        //Solo podra escribir numeros 
+        
+        int key =evt.getKeyChar();
         
         boolean numeros = key >= 48 && key <= 57;
 
@@ -433,6 +506,8 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGmailKeyTyped
 
     private void txtPaisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaisKeyTyped
+        //Solo podra escribir texto
+        
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -449,6 +524,8 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPaisKeyTyped
 
     private void txtProvinciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProvinciaKeyTyped
+        //Solo podra escribir texto
+        
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -465,6 +542,8 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProvinciaKeyTyped
 
     private void txtCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCiudadKeyTyped
+        //Solo podra escribir texto
+        
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -491,7 +570,16 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -501,6 +589,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel txtAlerta;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCiudad;
     private javax.swing.JPasswordField txtContrasena;
