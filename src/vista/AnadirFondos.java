@@ -2,6 +2,7 @@ package vista;
 
 import controlador.ControladorUsuario;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import modelo.Usuario;
 
 public class AnadirFondos extends javax.swing.JFrame {
@@ -93,15 +94,18 @@ public class AnadirFondos extends javax.swing.JFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         float fondos = Float.parseFloat((String) jComboBox1.getSelectedItem());
-        
-        new ControladorUsuario().anadirFondos(usuario, fondos);
+        String resultado = new ControladorUsuario().anadirFondos(usuario, fondos);
             
         this.setVisible(false);
+
+        JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
+
 
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         this.setVisible(false);
+        
     }//GEN-LAST:event_btnSalirActionPerformed
 
 

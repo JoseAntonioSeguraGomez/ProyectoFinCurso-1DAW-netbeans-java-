@@ -52,7 +52,6 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         }
          
-         redimensionarTabla();
     }
     
     private void cargarTablaConDatos(ArrayList<String[]> productos) {
@@ -73,10 +72,9 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         }
          
-         redimensionarTabla();
     }
     
-    private void redimensionarTabla() {
+    /*private void redimensionarTabla() {
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
         renderer.setHorizontalAlignment(SwingConstants.LEFT);
         Tabla.setDefaultRenderer(Object.class, renderer);
@@ -90,7 +88,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 }
         Tabla.getColumnModel().getColumn(column).setPreferredWidth(width);
         }
-    }
+    }*/
     
     public void iniciarComboBox(){
         DefaultComboBoxModel<String> comboBoxModel = new DefaultComboBoxModel<>(); 
@@ -112,13 +110,22 @@ public class MenuUsuario extends javax.swing.JFrame {
         Usuario usuarioMenu = new ControladorUsuario().recogerDatosUsuario(this.usuario);
         
         //Pasar los fondos a String
-        double fondos = usuarioMenu.getFondos();
-        String fondosString = Double.toString(usuarioMenu.getFondos());
+        float fondos = usuarioMenu.getFondos();
         
+        //Redondear Fondos
+        float resultado = (float) Math.round(fondos * 100) / 100;
+        
+        String fondosString = Float.toString(fondos);
+        
+        //Obtener numeroJuegos
+        ArrayList<String[]> productos = new ControladorUsuario().obtenerDatosFactura(usuario);
+        String numeroJuegos = Integer.toString(productos.size());
+
+
         //Establecer valores del dinero y nombre en el menu
         txtNombre.setText(usuarioMenu.getUsuario());
         txtDinero.setText(fondosString + " €");
-
+        txtJuegos.setText(numeroJuegos);
     }
     
     public void obtenerFotoPerfil(){
@@ -133,10 +140,7 @@ public class MenuUsuario extends javax.swing.JFrame {
             } catch (MalformedURLException e) {
                 // La URL de la imagen es incorrecta
                 e.printStackTrace();
-            } catch (IOException e) {
-                // Error de conexión o carga de la imagen
-                e.printStackTrace();
-            }   
+            } 
     }
 
     @SuppressWarnings("unchecked")
@@ -191,6 +195,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         Tabla.setRowHeight(32);
         Tabla.setShowGrid(false);
         jScrollPane1.setViewportView(Tabla);
+        Tabla.getColumnModel().getColumn(0).setMaxWidth(2);
+        Tabla.getColumnModel().getColumn(0).setPreferredWidth(2);
+
+        Tabla.getColumnModel().getColumn(1).setMaxWidth(2);
+        Tabla.getColumnModel().getColumn(1).setPreferredWidth(2);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 810, 370));
 
@@ -402,7 +411,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
-        // TODO add your handling code here:
+        new Factura(usuario);
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnAnadirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFondosActionPerformed

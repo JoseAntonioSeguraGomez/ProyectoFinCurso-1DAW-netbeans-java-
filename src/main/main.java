@@ -3,14 +3,6 @@ package main;
 import bbdd.conector;
 import vista.*;
 import controlador.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.swing.Timer;
 
 public class main extends controlador {
     public static void main(String[] args) {

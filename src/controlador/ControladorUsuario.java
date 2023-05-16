@@ -3,12 +3,19 @@ package controlador;
 import bbdd.ProductosBD;
 import modelo.Usuario;
 import bbdd.UsuariosBD;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import modelo.Producto;
 import vista.*;
 
@@ -97,8 +104,14 @@ public class ControladorUsuario {
         }
     }
     
-    public void anadirFondos(Usuario usuario, float fondos){
-        new UsuariosBD().añadirFondos(usuario, fondos);
+    public String anadirFondos(Usuario usuario, float fondos){
+        Usuario usuario1 = recogerDatosUsuario(usuario);
+        if(usuario1.getFondos() >= 900){
+            return "Su cartera ya ha alcanzado el limite";
+        }else{
+            new UsuariosBD().añadirFondos(usuario, fondos);
+            return "Se han añadido correctamente los fondos indicados, muchas gracias.";
+        }
     }
     
     public String realizarCompra(Usuario usuario, Producto producto){
@@ -112,10 +125,35 @@ public class ControladorUsuario {
         }else{
             usuario1.setFondos(usuario1.getFondos() - producto.getPrecio());
             producto.setUnidades(producto.getUnidades()-1);
-            
+            System.out.println(usuario1.getFondos());
             new UsuariosBD().actualizarUsuario(usuario1);
             new ProductosBD().actualizarUnidades(producto);
             
+            //Añadir datos de la compra a la factura
+            String nombreFichero = "src/facturas/" + usuario1.getUsuario() + ".txt";
+            
+            try{
+                //Creamos el nuevo fichero
+                File factura = new File(nombreFichero);
+                BufferedWriter escribirFactura = new BufferedWriter(new FileWriter(factura, true));
+                
+                //Generar codigoFactura
+                String codigo = codigoAleatorio() + tresPrimerasLetras(producto);
+                
+                //Fecha hoy
+                Date fechaActual = new Date();
+                SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+                
+                //Añadir nuevos datos a la factura
+                String datosFactura = (formatoFecha.format(fechaActual) + "|" + usuario1.getUsuario() + "|" + producto.getNombre() + "|" + producto.getGenero() + "|" + producto.getCategoria() + "|" + producto.getPrecio() + "|" + codigo);
+                escribirFactura.write(datosFactura);
+                escribirFactura.newLine();
+                
+                escribirFactura.close();
+            } catch (IOException e){
+                e.printStackTrace();
+                return "error";
+            }
             return "El producto se ha comprado con exito";
         }
     }
@@ -123,7 +161,7 @@ public class ControladorUsuario {
     //Devolver EDAD
     public int devolverEdad(Usuario usuario) {
         try {
-            //FORMATO FECHA
+            //Formato Fecha
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             
             //Pasar la fecha de nacimiento al formato DATE dado
@@ -153,5 +191,53 @@ public class ControladorUsuario {
             return 0;
         }
     }
+    
+    //Generar Codigo Aleatorio
+    public String codigoAleatorio() {
+        Random random = new Random();
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 4; i++) {
+            int digito = random.nextInt(10);
+            sb.append(digito);
+        }
+
+        return sb.toString();
+    }
+    
+    //Reoger las tres primeras letras del producto
+    public String tresPrimerasLetras(Producto producto) {
+        String nombreProducto = producto.getNombre();
+        String tresPrimerasLetras = nombreProducto.substring(0, Math.min(nombreProducto.length(), 3));
+        
+        return tresPrimerasLetras;
+    }
+    
+    public ArrayList<String[]> obtenerDatosFactura(Usuario usuario){
+        String nombreFichero = "src/facturas/" + usuario.getUsuario() + ".txt";
+        
+        File fichero = new File(nombreFichero);
+        if (fichero.exists()) {
+            try (BufferedReader br = new BufferedReader(new FileReader(fichero))) {
+                ArrayList<String[]> datos = new ArrayList<>();
+                String linea;
+                while ((linea = br.readLine()) != null) {
+                    String[] fila = linea.split("\\|");
+                    datos.add(fila);
+                }
+                
+                return datos;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            
+            
+        }else {
+            return null;
+        }
+        
+        return null;
+    }  
+
     
 }

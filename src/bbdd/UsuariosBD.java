@@ -121,6 +121,7 @@ public class UsuariosBD {
     }
     
     public void actualizarUsuario(Usuario usuario){
+        System.out.println("UPDATE USUARIOS SET FONDOS = " + usuario.getFondos() + " WHERE USUARIO = '" + usuario.getUsuario() + "'");
     conector.EjecutarUpdate("UPDATE USUARIOS SET FONDOS = " + usuario.getFondos() + " WHERE USUARIO = '" + usuario.getUsuario() + "'");
     
     }
