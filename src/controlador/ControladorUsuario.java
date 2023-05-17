@@ -20,7 +20,10 @@ import vista.*;
 
 
 public class ControladorUsuario {
-    public String AnadirUsuarios(Usuario usuario){
+    public ArrayList<String> AnadirUsuarios(Usuario usuario){
+        //Creamos un array para almacenar el error y el texto
+        ArrayList<String> error = new ArrayList<String>();
+        
         //Crea una instancia de la clase UsuariosBD 
         UsuariosBD usuarios = new UsuariosBD();
         
@@ -32,28 +35,77 @@ public class ControladorUsuario {
 
         //Verifica las diferentes condiciones que podrían surgir, en caso afirmativo devolvera un String con el error, si no se realizara la operación
         if(existe != null){
-            return "El usuario escrito ya existe, escriba otro";
-        } else if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("") || usuario.getNombre().equals("") || telefonoString.equals("") || usuario.getApellidos().equals("") || usuario.getNacimiento().equals("") || usuario.getGmail().equals("")|| usuario.getPais().equals("")){
-            return "Alguno de los campos obigatorios estan vacios";
+            error.add("Error");
+            error.add("El usuario escrito ya existe, escriba otro");
+            return error;
+        } else if(usuario.getUsuario().equals("")){
+            error.add("Usuario");
+            error.add("El campo usuario está vacio");
+            return error;
         } else if(usuario.getUsuario().length() < 4) {
-            return "El nombre del usuario es demasiado corto";
+            error.add("Usuario");
+            error.add("El campo usuario es demasiado corto");
+            return error;
+        } else if(usuario.getContrasena().equals("")){
+            error.add("Contrasena");
+            error.add("El campo contraseña está vacio");
+            return error;
         } else if(usuario.getContrasena().length() < 6) {
-            return "La contraseña es demasiado corta";
-        }  else if (!usuario.getContrasena().matches(".*[a-zA-Z].*")) {
-            return "Debes introducir como mínimo algún caracter en la contraseña";
+            error.add("Contrasena");
+            error.add("El campo contraseña es demasiado corta");
+            return error;
+        } else if (!usuario.getContrasena().matches(".*[a-zA-Z].*")) {
+            error.add("Contrasena");
+            error.add("El campo contraseña necesita alguna letra");
+            return error;
         } else if (!usuario.getContrasena().matches(".*\\d.*")) {
-            return "Debes introducir como mínimo algún digito en la contraseña";
-        } else if(telefonoString.length() < 9) {
-            return "Has introducido de manera incorrecta el número de teléfono";
-        } else if(!usuario.getGmail().contains("@")) {
-            return "El formato de gmail es incorrecto";
+            error.add("Contrasena");
+            error.add("El campo contraseña debe contener algún número");
+            return error;
+        } else if(usuario.getNombre().equals("")){
+            error.add("Nombre");
+            error.add("El campo nombre está vacio");
+            return error;
+        } else if(usuario.getApellidos().equals("")){
+            error.add("Apellidos");
+            error.add("El campo Apellidos está vacio");
+            return error;
+        } else if(usuario.getNacimiento().equals("")){
+            error.add("Nacimiento");
+            error.add("El campo nacimiento está vacio");
+            return error;
         } else if (!usuario.getNacimiento().matches("\\d{4}-\\d{2}-\\d{2}")) {
-            return "El formato de nacimiento es incorrecto (*año-mes-dia*)";
+            error.add("Nacimiento");
+            error.add("El campo nacimento es incorrecto (*año-mes-dia*)");
+            return error;
+        } else if(telefonoString.equals("")){
+            error.add("Telefono");
+            error.add("El campo telefono está vacio");
+            return error;
+        } else if(telefonoString.length() < 9) {
+            error.add("Telefono");
+            error.add("El campo teléfono es demasiado corto");
+            return error;
+        } else if(usuario.getGmail().equals("")){
+            error.add("Email");
+            error.add("El campo Email está vacio");
+            return error;
+        }else if (!usuario.getGmail().contains("@gmail.com") && !usuario.getGmail().contains("@gmail.es") && !usuario.getGmail().contains("@hotmail.com") && !usuario.getGmail().contains("@hotmail.es")) {
+            error.add("Email");
+            error.add("El campo Email tiene un formato erroneo");
+            return error;
+        }else if(usuario.getPais().equals("")){
+            error.add("Pais");
+            error.add("El campo pais está vacio");
+            return error;
         } else {
             //Si todas las condiciones se cumplen, se agrega el usuario a la base de datos
             usuarios.anadirUsuariosBD(usuario);
+            error.add("Hecho");
+            error.add("El usuario se ha creado correctamente");
             new Menu();
-            return "hecho";
+            return error;
+
         }
     } 
     

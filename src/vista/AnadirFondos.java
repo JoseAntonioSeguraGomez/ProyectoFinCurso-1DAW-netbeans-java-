@@ -16,6 +16,7 @@ public class AnadirFondos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         iniciarComboBox();
         setVisible(true);
+        
     }
     
     //Asignar valores al ComboBox
@@ -32,6 +33,7 @@ public class AnadirFondos extends javax.swing.JFrame {
         
         //Posicionarse al primer elemento
         jComboBox1.setSelectedIndex(0);
+       
     }
 
     @SuppressWarnings("unchecked")

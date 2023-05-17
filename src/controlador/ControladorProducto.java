@@ -23,30 +23,66 @@ public class ControladorProducto {
         }
     }
 
-    public String AnadirProducto(Producto producto){
+    public ArrayList<String> AnadirProducto(Producto producto){
+        //Creamos un array para almacenar el error y el texto
+        ArrayList<String> error = new ArrayList<String>();
+        
         //Comprueba si el producto ya existe en la base de datos
         String existe = new ProductosBD().ExisteProducto(producto);
 
         //Convierte los campos numéricos del producto a String
         String categoriaString = String.valueOf(producto.getCategoria());
-        String precioString = String.valueOf(producto.getPrecio());
-        String unidadesString = String.valueOf(producto.getUnidades());
+        String precioString;
+        String unidadesString;
+        
+        //Comprobaciones si un campo es menor o igaul 0
+        if(producto.getPrecio() <= 0){
+            precioString = ""; 
+        }else{
+            precioString = String.valueOf(producto.getPrecio());
+        }
+        
+        if(producto.getUnidades() <= 0){
+            unidadesString = ""; 
+        }else{
+            unidadesString = String.valueOf(producto.getUnidades());
+        }
 
         //Verifica diferentes condiciones a la hora de añadir el producto
         if(existe != null){
-            return "El producto escrito ya existe, escriba otro";
-        }else if(producto.getNombre().equals("") || producto.getDescripcion().equals("") || producto.getGenero().equals("") || categoriaString.equals("") || precioString.equals("") || unidadesString.equals("")){
-            return "Alguno de los campos están vacíos";
+            error.add("Existe");
+            error.add("El producto ya existe");
+            return error;
+        }else if(producto.getNombre().equals("")){
+            error.add("Nombre");
+            error.add("El campo nombre esta vacio");
+            return error;        
+        } else if(producto.getDescripcion().equals("")) {
+            error.add("Descripcion");
+            error.add("El campo descripcion esta vacio");
+            return error;
         } else if(producto.getDescripcion().length() < 10) {
-            return "La descripción del producto es demasiado corta";
-        }
-        /* else if(!producto.getPrecio().equals("\\d{0,2}(\\.\\d{1,2})?")) {
-               return "El formato de precio es incorrecto (*69.99*)";
-        } */
-        else{
+            error.add("Descripcion");
+            error.add("La descripción es demasiado corta");
+            return error;
+        } else if(producto.getGenero().equals("")) {
+            error.add("Genero");
+            error.add("El campo genero esta vacio");
+            return error;
+        } else if(precioString.equals("")) {
+            error.add("Precio");
+            error.add("El campo precio esta vacio");
+            return error;
+        } else if(unidadesString.equals("")) {
+            error.add("Unidades");
+            error.add("El campo unidades esta vacio");
+            return error;
+        } else {
             //Llama al método de la base de datos para añadir el producto
             new ProductosBD().AnadirProducto(producto);
-            return "hecho";
+            error.add("Hecho");
+            error.add("El producto se ha añadido correctamente");
+            return error;
         }
     }
 

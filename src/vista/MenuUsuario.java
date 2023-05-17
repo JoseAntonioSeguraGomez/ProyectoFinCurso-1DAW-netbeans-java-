@@ -141,6 +141,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     public void cargarElementosMenu(){
         //Crear un usuario que recoja todos los datos del usuario + contraseña introducidos.
         Usuario usuarioMenu = new ControladorUsuario().recogerDatosUsuario(this.usuario);
+        String numeroJuegos;
         
         //Pasar los fondos a String
         float fondos = usuarioMenu.getFondos();
@@ -152,7 +153,13 @@ public class MenuUsuario extends javax.swing.JFrame {
         
         //Obtener numeroJuegos
         ArrayList<String[]> productos = new ControladorUsuario().obtenerDatosFactura(usuario);
-        String numeroJuegos = Integer.toString(productos.size());
+        productos = new ArrayList<>();
+        
+        if(productos.isEmpty()){
+            numeroJuegos = "0";
+        }else{
+            numeroJuegos = Integer.toString(productos.size());
+        }
 
 
         //Establecer valores del dinero y nombre en el menu
@@ -347,7 +354,7 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         txtDinero.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtDinero.setForeground(new java.awt.Color(255, 255, 255));
-        txtDinero.setText("19.99 $");
+        txtDinero.setText("***");
         jPanel1.add(txtDinero, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 100, 40));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -362,12 +369,12 @@ public class MenuUsuario extends javax.swing.JFrame {
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombre.setText("Jose Antonio");
+        txtNombre.setText("***");
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 100, 40));
 
         txtJuegos.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtJuegos.setForeground(new java.awt.Color(255, 255, 255));
-        txtJuegos.setText("47");
+        txtJuegos.setText("***");
         jPanel1.add(txtJuegos, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 460, 70, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -440,7 +447,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         
         //Envia una alerta en caso de fallo o exito
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
-
+        
+        cargarElementosMenu();
+        cargarTabla();
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
@@ -468,12 +477,18 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFacturaActionPerformed
         //Abre la vista factura
-        new Factura(usuario);
+        boolean resultado = new Factura(usuario).cargarTabla();
+        if(resultado == true){
+            new Factura(usuario).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "No tienes ninguna factura", "Alerta", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnFacturaActionPerformed
 
     private void btnAnadirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFondosActionPerformed
         //Abre la vista Anadir
         new AnadirFondos(usuario);
+        
     }//GEN-LAST:event_btnAnadirFondosActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed

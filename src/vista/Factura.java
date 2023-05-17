@@ -2,6 +2,7 @@ package vista;
 
 import controlador.ControladorUsuario;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
 
@@ -16,11 +17,10 @@ public class Factura extends javax.swing.JFrame {
         initComponents();
         cargarTabla();
         setLocationRelativeTo(null);
-        setVisible(true);
     }
     
     //Carga automaticamente los datos de la tabla
-    private void cargarTabla() {
+    public boolean cargarTabla() {
         //Introduzco en un array el nombre de las columnas
         String[] nombresColumnas = {"Fecha", "Nombre", "Producto", "Genero", "Categoria", "Precio", "Codigo"};
         
@@ -38,15 +38,19 @@ public class Factura extends javax.swing.JFrame {
         //Recoge los datos de la factura en una Matriz
         ArrayList<String[]> productos = new ControladorUsuario().obtenerDatosFactura(usuario);
         
-        //Imprime cada fila del txt en las columnas correspondientes y las añade al modelo
-         for (int i = 0; i < productos.size(); i++) {
-            if(productos.get(i)[6].equals("0")){
-                 
-            }else{
-                modelo.addRow(productos.get(i));
+        //Verifica si el usuario tiene productos
+        if (productos != null) {
+            for (int i = 0; i < productos.size(); i++) {
+                if (productos.get(i)[6].equals("0")) {
+                    
+                } else {
+                    modelo.addRow(productos.get(i));
+                }
             }
+        } else {
+            return false;
         }
-         
+        return true;
     }
 
     @SuppressWarnings("unchecked")

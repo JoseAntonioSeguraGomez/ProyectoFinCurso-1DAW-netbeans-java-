@@ -3,7 +3,11 @@ package vista;
 import javax.swing.DefaultComboBoxModel;
 import modelo.Producto;
 import controlador.ControladorProducto;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 public class Anadir extends javax.swing.JFrame {
 
@@ -11,6 +15,7 @@ public class Anadir extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         IniciarComboBox();
+        resetearBordesNormales();
         setVisible(true);
     }
     
@@ -28,6 +33,17 @@ public class Anadir extends javax.swing.JFrame {
         
         //Seleccionar de forma predeterminada la posicion 0
         jComboBox1.setSelectedIndex(0);
+    }
+    
+    // Método para restablecer los bordes de los campos de texto
+    private void resetearBordesNormales() {
+        Border bordeNormal = BorderFactory.createLineBorder(Color.BLACK);
+        txtNombre.setBorder(bordeNormal);
+        txtDescripcion.setBorder(bordeNormal);
+        txtGenero.setBorder(bordeNormal);
+        jComboBox1.setBorder(bordeNormal);
+        txtPrecio.setBorder(bordeNormal);
+        txtUnidades.setBorder(bordeNormal);
     }
 
     @SuppressWarnings("unchecked")
@@ -50,6 +66,7 @@ public class Anadir extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtDescripcion = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        txtAlerta = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,29 +79,29 @@ public class Anadir extends javax.swing.JFrame {
                 txtNombreKeyTyped(evt);
             }
         });
-        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 190, 20));
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 140, 20));
 
         txtPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecioKeyTyped(evt);
             }
         });
-        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 190, 20));
+        getContentPane().add(txtPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 140, 20));
 
         jLabel8.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Precio:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, -1, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("  Unidades:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText(" Categoría:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, 20));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, 20));
 
         txtUnidades.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +113,7 @@ public class Anadir extends javax.swing.JFrame {
                 txtUnidadesKeyTyped(evt);
             }
         });
-        getContentPane().add(txtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, 190, 20));
+        getContentPane().add(txtUnidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 140, 20));
 
         txtGenero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +125,7 @@ public class Anadir extends javax.swing.JFrame {
                 txtGeneroKeyTyped(evt);
             }
         });
-        getContentPane().add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 190, -1));
+        getContentPane().add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 120, 140, -1));
 
         btnConfirmar.setBackground(new java.awt.Color(51, 204, 0));
         btnConfirmar.setFont(new java.awt.Font("Source Code Pro Black", 0, 12)); // NOI18N
@@ -118,17 +135,17 @@ public class Anadir extends javax.swing.JFrame {
                 btnConfirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, 40, 40));
+        getContentPane().add(btnConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 40, 40));
 
         jLabel5.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, -1, 20));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Género:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, -1, 20));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Source Code Pro", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -141,7 +158,7 @@ public class Anadir extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Source Code Pro", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Descripción:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, 20));
 
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +170,7 @@ public class Anadir extends javax.swing.JFrame {
                 txtDescripcionKeyTyped(evt);
             }
         });
-        getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 190, -1));
+        getContentPane().add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 140, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +178,11 @@ public class Anadir extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 190, 20));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 140, 20));
+
+        txtAlerta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        txtAlerta.setForeground(new java.awt.Color(255, 0, 0));
+        getContentPane().add(txtAlerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 380, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/VentanaPeque+¦a.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -170,6 +191,10 @@ public class Anadir extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        //Declaro un borde rojo
+        Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
+        resetearBordesNormales();
+
         //Recoge los datos introducidos por el usuario
         String nombre = txtNombre.getText();
         String descripcion = txtDescripcion.getText();
@@ -177,24 +202,55 @@ public class Anadir extends javax.swing.JFrame {
         
         //Pasar de String a los valores adecuados
         int categoria = Integer.parseInt((String) jComboBox1.getSelectedItem());
-        float precio = Float.parseFloat(txtPrecio.getText());
-        int unidades = Integer.parseInt(txtUnidades.getText());
-
+        float precio;
+        int unidades;
+        
+        //Verificar si los campos numericos estan vacios
+        if (!txtPrecio.getText().isEmpty()) {
+            precio = Float.parseFloat(txtPrecio.getText());
+        } else {
+            precio = 0;
+        }
+        
+        if (!txtUnidades.getText().isEmpty()) {
+            unidades = Integer.parseInt(txtUnidades.getText());
+        } else {
+            unidades = 0;
+        }
+        
         //Crear un nuevo producto con los datos recogidos
         Producto producto = new Producto(nombre, descripcion, genero, categoria, precio, unidades);
         
         //Levar al controlador el producto para su correcta implementacion
-        String resultado = new ControladorProducto().AnadirProducto(producto);
+        ArrayList<String> respuesta = new ControladorProducto().AnadirProducto(producto);
+        String resultado = respuesta.get(0);
+        String alerta = respuesta.get(1);
         
         //En caso de que la implementacion ha sido correcta se cerrará la ventana
-        if(resultado.equals("hecho")){
+        if(resultado.equals("Hecho")){
             this.setVisible(false);
-            
-        //Imprimira los fallos ocurridos a la hora de la implementación
-        }else{
-            JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
-
-        }
+            JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);
+            } else if(resultado.equals("Nombre")){
+                txtNombre.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Existe")){
+                txtNombre.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Descripcion")){
+                txtDescripcion.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Genero")){
+                txtGenero.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Precio")){
+                txtPrecio.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Unidades")){
+                txtUnidades.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else {
+                this.setVisible(false);
+            }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
@@ -232,7 +288,6 @@ public class Anadir extends javax.swing.JFrame {
 
     private void txtGeneroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGeneroKeyTyped
         //Limitar el tamaño de escritura y solo permita letras
-        
         int key =evt.getKeyChar();
         
         boolean mayusculas = key >= 65 && key <= 90;
@@ -249,8 +304,17 @@ public class Anadir extends javax.swing.JFrame {
     }//GEN-LAST:event_txtGeneroKeyTyped
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
-        //Limitar el tamaño de escritura
+        //Limitar el tamaño de escritura y permitir decimales
+        int key =evt.getKeyChar();
         
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean decimales= key == '.';
+        boolean espacios = key >= 32;
+
+        if(!(mayusculas || minusculas || espacios || decimales)){
+            evt.consume();
+        }
         if(txtUnidades.getText().length() == 5){
             evt.consume();
         }
@@ -286,6 +350,7 @@ public class Anadir extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel txtAlerta;
     private javax.swing.JTextField txtDescripcion;
     private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtNombre;

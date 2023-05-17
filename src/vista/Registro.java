@@ -2,7 +2,12 @@ package vista;
 
 import modelo.Usuario;
 import controlador.ControladorUsuario;
+import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
+
 
 public class Registro extends javax.swing.JFrame {
 
@@ -10,7 +15,21 @@ public class Registro extends javax.swing.JFrame {
     public Registro() {
         initComponents();
         setLocationRelativeTo(null);
+        resetearBordesNormales();
         setVisible(true);
+    }
+    
+    // Método para restablecer los bordes de los campos de texto
+    private void resetearBordesNormales() {
+        Border bordeNormal = BorderFactory.createLineBorder(Color.BLACK);
+        txtUsuario.setBorder(bordeNormal);
+        txtContrasena.setBorder(bordeNormal);
+        txtNombre.setBorder(bordeNormal);
+        txtApellidos.setBorder(bordeNormal);
+        txtNacimiento.setBorder(bordeNormal);
+        txtTelefono.setBorder(bordeNormal);
+        txtGmail.setBorder(bordeNormal);
+        txtPais.setBorder(bordeNormal);
     }
 
     @SuppressWarnings("unchecked")
@@ -289,35 +308,35 @@ public class Registro extends javax.swing.JFrame {
 
         txtAlerta.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         txtAlerta.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(txtAlerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, 390, 30));
+        jPanel1.add(txtAlerta, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 520, 340, 30));
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel22.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22.setText("*");
         jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 10, 40));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
         jLabel18.setText("*");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 230, 10, 40));
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("*");
         jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 10, 40));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setForeground(new java.awt.Color(255, 0, 0));
         jLabel19.setText("*");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 10, 40));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setForeground(new java.awt.Color(255, 0, 0));
         jLabel20.setText("*");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 236, 10, 30));
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
         jLabel23.setText("*");
         jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 10, 40));
 
@@ -327,12 +346,12 @@ public class Registro extends javax.swing.JFrame {
         jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(498, 236, 10, 30));
 
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setForeground(new java.awt.Color(255, 0, 0));
         jLabel24.setText("*");
         jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 270, 10, 40));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setForeground(new java.awt.Color(255, 0, 0));
         jLabel25.setText("*");
         jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 10, 40));
 
@@ -392,6 +411,12 @@ public class Registro extends javax.swing.JFrame {
 
     //Botón de registro
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
+        //Declaro un borde rojo
+        Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
+        
+        //Reiniciar bordes
+        resetearBordesNormales();
+
         //Recogemos todos los datos introducidos por el usuario
         String usuario = txtUsuario.getText();
         String contrasena = txtContrasena.getText();
@@ -406,7 +431,8 @@ public class Registro extends javax.swing.JFrame {
         //Se comprueba primeramente que el campo telefono este relleno para futuras verificaciones
         int telefono = 0;
         if(txtTelefono.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "El campo teléfono está vacio", "Alerta", JOptionPane.WARNING_MESSAGE);
+            txtTelefono.setBorder(bordeRojo);
+            txtAlerta.setText("El campo teléfono esta vacio");
         }else{
             telefono = Integer.parseInt(txtTelefono.getText());
             
@@ -414,16 +440,46 @@ public class Registro extends javax.swing.JFrame {
             Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
 
             //Se envia al controlador para que verifique que todos los datos son correctos
-            String resultado = new ControladorUsuario().AnadirUsuarios(usuario1);
+            ArrayList<String> respuesta = new ControladorUsuario().AnadirUsuarios(usuario1);
+            String resultado = respuesta.get(0);
+            String alerta = respuesta.get(1);
+
 
             //Se comprueba si el usuario es correcto, en caso afirmativo se cierra la ventana y en caso negativo se notifica una alerta
-            if(resultado.equals("hecho")){
+            if(resultado.equals("Hecho")){
                 this.setVisible(false);
-            }else{
-                txtAlerta.setText(resultado);
+                JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);
+            } else if(resultado.equals("Usuario")){
+                txtUsuario.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            }  else if(resultado.equals("Error")){
+                txtUsuario.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Contrasena")){
+                txtContrasena.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Nombre")){
+                txtNombre.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Apellidos")){
+                txtApellidos.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Nacimiento")){
+                txtNacimiento.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Telefono")){
+                txtTelefono.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Email")){
+                txtGmail.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else if(resultado.equals("Pais")){
+                txtPais.setBorder(bordeRojo);
+                txtAlerta.setText(alerta);
+            } else {
+                this.setVisible(false);
             }
         }
-        
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     //Comprobaciones sobre que caracteres se deben poner en todos los txt
@@ -432,6 +488,7 @@ public class Registro extends javax.swing.JFrame {
         if(txtUsuario.getText().length() == 20){
             evt.consume();
         }
+        
     }//GEN-LAST:event_txtUsuarioKeyTyped
 
     private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
