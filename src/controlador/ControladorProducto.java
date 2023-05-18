@@ -73,7 +73,7 @@ public class ControladorProducto {
             error.add("Precio");
             error.add("El campo precio esta vacio");
             return error;
-        } else if(unidadesString.equals("")) {
+        }else if(unidadesString.equals("")) {
             error.add("Unidades");
             error.add("El campo unidades esta vacio");
             return error;

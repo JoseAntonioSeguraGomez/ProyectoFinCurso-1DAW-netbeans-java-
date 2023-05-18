@@ -430,12 +430,12 @@ public class Registro extends javax.swing.JFrame {
         
         //Se comprueba primeramente que el campo telefono este relleno para futuras verificaciones
         int telefono = 0;
+        
         if(txtTelefono.getText().equals("")){
-            txtTelefono.setBorder(bordeRojo);
-            txtAlerta.setText("El campo teléfono esta vacio");
+            telefono = 0;
         }else{
             telefono = Integer.parseInt(txtTelefono.getText());
-            
+        }   
             //Crea un nuevo usuario con los datos introducidos
             Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
 
@@ -479,7 +479,6 @@ public class Registro extends javax.swing.JFrame {
             } else {
                 this.setVisible(false);
             }
-        }
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     //Comprobaciones sobre que caracteres se deben poner en todos los txt

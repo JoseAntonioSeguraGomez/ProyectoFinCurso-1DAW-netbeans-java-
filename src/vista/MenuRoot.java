@@ -196,6 +196,7 @@ public class MenuRoot extends javax.swing.JFrame {
 
         btnEliminar.setBackground(new java.awt.Color(255, 0, 0));
         btnEliminar.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(8, 7, 7));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Basura.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -208,6 +209,7 @@ public class MenuRoot extends javax.swing.JFrame {
 
         btnEditar.setBackground(new java.awt.Color(255, 255, 0));
         btnEditar.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(8, 7, 7));
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         btnEditar.setText(" Editar");
         btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -219,6 +221,7 @@ public class MenuRoot extends javax.swing.JFrame {
         jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 130, 110, 40));
 
         btnVerProductos.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
+        btnVerProductos.setForeground(new java.awt.Color(8, 7, 7));
         btnVerProductos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/actualizar.png"))); // NOI18N
         btnVerProductos.setText(" Actualizar");
         btnVerProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -238,6 +241,7 @@ public class MenuRoot extends javax.swing.JFrame {
         jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 130, 90, 40));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jComboBox1.setForeground(new java.awt.Color(8, 7, 7));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -248,6 +252,7 @@ public class MenuRoot extends javax.swing.JFrame {
 
         btnAnadir.setBackground(new java.awt.Color(0, 204, 0));
         btnAnadir.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
+        btnAnadir.setForeground(new java.awt.Color(8, 7, 7));
         btnAnadir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AnadirPequeño.png"))); // NOI18N
         btnAnadir.setText(" Añadir ");
         btnAnadir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

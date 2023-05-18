@@ -78,7 +78,7 @@ public class ControladorUsuario {
             error.add("Nacimiento");
             error.add("El campo nacimento es incorrecto (*año-mes-dia*)");
             return error;
-        } else if(telefonoString.equals("")){
+        } else if(telefonoString.equals("0")){
             error.add("Telefono");
             error.add("El campo telefono está vacio");
             return error;

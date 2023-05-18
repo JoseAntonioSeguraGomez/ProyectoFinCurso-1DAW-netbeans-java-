@@ -157,12 +157,11 @@ public class MenuUsuario extends javax.swing.JFrame {
         //Obtener numeroJuegos
         ArrayList<String[]> productos = new ControladorUsuario().obtenerDatosFactura(usuario);
 
-        if (productos.isEmpty()) {
-            numeroJuegos = "0";
-        } else {
+        if (productos != null && !productos.isEmpty()) {
             numeroJuegos = Integer.toString(productos.size());
+        } else {
+            numeroJuegos = "0";
         }
-
 
         //Establecer valores del dinero y nombre en el menu
         txtNombre.setText(usuarioMenu.getUsuario());
@@ -180,7 +179,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 Image imagen = icono.getImage();
                 
                 //Redimensionar la imagen
-                Image imagenRedimensionada = imagen.getScaledInstance(170, 170, Image.SCALE_SMOOTH);
+                Image imagenRedimensionada = imagen.getScaledInstance(190, 170, Image.SCALE_SMOOTH);
                 ImageIcon iconoRedimensionado = new ImageIcon(imagenRedimensionada);
                 
                 //Establecer imagen
