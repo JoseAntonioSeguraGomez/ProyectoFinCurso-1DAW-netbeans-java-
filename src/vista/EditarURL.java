@@ -79,6 +79,7 @@ public class EditarURL extends javax.swing.JFrame {
         
         //En caso de realizar una correcta implementación se cerrará la vista, en caso contrario se imprime la alerta
         if (resultado.equals("hecho")){
+            new ControladorSonido().sonidoFinalizar();
             this.setVisible(false);
         }else{
             JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);

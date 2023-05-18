@@ -49,7 +49,6 @@ public class AnadirFondos extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 540, 10));
 
@@ -99,8 +98,9 @@ public class AnadirFondos extends javax.swing.JFrame {
         //Se cierra la ventana
         this.setVisible(false);
 
-        //Se muestra un panel donde se muestra el resultado sea correcto o no la transacción
         new ControladorSonido().sonidoConfirmar();
+
+        //Se muestra un panel donde se muestra el resultado sea correcto o no la transacción
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
         
         ControladorUsuario.refreshMenuUsuario();

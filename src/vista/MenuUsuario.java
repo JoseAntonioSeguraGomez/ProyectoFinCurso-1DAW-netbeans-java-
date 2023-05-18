@@ -185,7 +185,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 //Establecer imagen
                 btnFoto.setIcon(iconoRedimensionado);
             } catch (MalformedURLException e) {
-                // La URL de la imagen es incorrecta
+                //La URL de la imagen es incorrecta
                 e.printStackTrace();
             } 
     }
@@ -459,6 +459,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         //LLama al controlador dando el usuario y producto a comprar
         String resultado = new ControladorUsuario().realizarCompra(usuario, producto);
         
+        new ControladorSonido().sonidoConfirmar();
+
         //Envia una alerta en caso de fallo o exito
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
         
@@ -486,6 +488,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
         //Abre la vista Menu y cierra la actual
         this.setVisible(false);
+        new ControladorSonido().sonidoFinalizar();
         new Menu();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
@@ -493,6 +496,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         //Abre la vista factura
         boolean resultado = new Factura(usuario).cargarTabla();
         if(resultado == true){
+            new ControladorSonido().sonidoFinalizar();
             new Factura(usuario).setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null, "No tienes ninguna factura", "Alerta", JOptionPane.WARNING_MESSAGE);
@@ -501,12 +505,14 @@ public class MenuUsuario extends javax.swing.JFrame {
 
     private void btnAnadirFondosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirFondosActionPerformed
         //Abre la vista Anadir
+        new ControladorSonido().sonidoFinalizar();
         new AnadirFondos(usuario);
         
     }//GEN-LAST:event_btnAnadirFondosActionPerformed
 
     private void btnFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFotoActionPerformed
         //Abre la vista editar
+        new ControladorSonido().sonidoFinalizar();
         new EditarURL(usuario);
     }//GEN-LAST:event_btnFotoActionPerformed
 

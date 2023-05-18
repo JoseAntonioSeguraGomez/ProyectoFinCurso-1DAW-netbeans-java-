@@ -3,6 +3,7 @@ package vista;
 import javax.swing.DefaultComboBoxModel;
 import modelo.Producto;
 import controlador.ControladorProducto;
+import controlador.ControladorSonido;
 import controlador.ControladorUsuario;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -233,6 +234,7 @@ public class Anadir extends javax.swing.JFrame {
         
         //En caso de que la implementacion ha sido correcta se cerrará la ventana
         if(resultado.equals("Hecho")){
+            new ControladorSonido().sonidoConfirmar();
             new ControladorUsuario().refreshMenuRoot();
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import controlador.ControladorProducto;
+import controlador.ControladorSonido;
 import controlador.ControladorUsuario;
 import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
@@ -300,7 +301,8 @@ public class MenuRoot extends javax.swing.JFrame {
         
         //Llama al controlador y envia el producto
         new controlador.ControladorProducto().ActualizarProductos(producto);
-        cargarTabla();
+        new ControladorSonido().sonidoConfirmar();
+
         }else{
             JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fila", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
@@ -309,6 +311,7 @@ public class MenuRoot extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         //Abre la vista eliminar
+        new ControladorSonido().sonidoFinalizar();
         new Eliminar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
@@ -326,6 +329,7 @@ public class MenuRoot extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         //Sale del menuRoot para volver a la pantalla del Login
         this.setVisible(false);
+        new ControladorSonido().sonidoFinalizar();
         new Menu();
     }//GEN-LAST:event_btnSalirActionPerformed
 
@@ -339,6 +343,7 @@ public class MenuRoot extends javax.swing.JFrame {
 
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
         //Abre la vista Anadir 
+        new ControladorSonido().sonidoFinalizar();
         new Anadir();
        
     }//GEN-LAST:event_btnAnadirActionPerformed

@@ -1,6 +1,7 @@
 package vista;
 
 import bbdd.conector;
+import controlador.ControladorSonido;
 import modelo.Usuario;
 import controlador.ControladorUsuario;
 import java.awt.Color;
@@ -150,7 +151,8 @@ public class Menu extends javax.swing.JFrame {
     //Botón de registro
     private void btnRegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarmeActionPerformed
         this.setVisible(false);
-        Registro registro = new Registro();
+        new ControladorSonido().sonidoFinalizar();
+        new Registro();
     }//GEN-LAST:event_btnRegistrarmeActionPerformed
 
     //Botón Salir de la aplicación
@@ -187,6 +189,7 @@ public class Menu extends javax.swing.JFrame {
                 txtContrasena.setBorder(bordeRojo);
                 jLabel8.setText("Las credenciales introducidas son incorrectas");
             }else if(resultadoInicioSesion.equals("correcto")){
+                new ControladorSonido().sonidoFinalizar();
                 this.setVisible(false);
             }
                 

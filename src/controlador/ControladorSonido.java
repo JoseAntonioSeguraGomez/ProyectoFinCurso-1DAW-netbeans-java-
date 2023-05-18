@@ -40,7 +40,7 @@ public class ControladorSonido {
         reproducirSonidos(sonido);
     }
         
-    public void sonidoFinalizado(){
+    public void sonidoFinalizar(){
         //Añado la url del efecto de sonido
         URL sonido = getClass().getResource("/Sonidos/acabar.wav");
         

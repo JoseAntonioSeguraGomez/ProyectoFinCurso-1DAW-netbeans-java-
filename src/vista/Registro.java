@@ -410,6 +410,7 @@ public class Registro extends javax.swing.JFrame {
     //Volver a la ventana anterior
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.setVisible(false);
+        new ControladorSonido().sonidoFinalizar();
         new Menu();
     }//GEN-LAST:event_btnVolverActionPerformed
 
