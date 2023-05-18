@@ -20,6 +20,11 @@ import vista.*;
 
 
 public class ControladorUsuario {
+    
+    static MenuUsuario menuUsuario;
+    static MenuRoot menuRoot;
+
+    
     public ArrayList<String> AnadirUsuarios(Usuario usuario){
         //Creamos un array para almacenar el error y el texto
         ArrayList<String> error = new ArrayList<String>();
@@ -122,10 +127,10 @@ public class ControladorUsuario {
                 return "Incorrecto";
             }   else {
                 if (rol.equals("Cliente")) {
-                    new MenuUsuario(usuario);
+                    menuUsuario = new MenuUsuario(usuario);
                     return "correcto";
                 } else if (rol.equals("root")) {
-                    new MenuRoot();
+                    menuRoot = new MenuRoot();
                     return "correcto";
                     //En caso de que alguno de los campos estén vacios
                 }
@@ -198,6 +203,7 @@ public class ControladorUsuario {
             new UsuariosBD().añadirFondos(usuario, fondos);
             return "Se han añadido correctamente los fondos indicados, muchas gracias.";
         }
+        
     }
     
     public String realizarCompra(Usuario usuario, Producto producto){
@@ -346,6 +352,16 @@ public class ControladorUsuario {
 
         // Si ocurre algún error se devuelve null
         return null;
+    }
+    
+    
+    //Permite actualizar las tablas de sus respectivas vistas
+    public static void refreshMenuUsuario(){
+        menuUsuario.refreshUsuario();
+    }
+    
+    public static void refreshMenuRoot(){
+        menuRoot.refreshRoot();
     }
 
     

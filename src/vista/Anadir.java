@@ -3,6 +3,7 @@ package vista;
 import javax.swing.DefaultComboBoxModel;
 import modelo.Producto;
 import controlador.ControladorProducto;
+import controlador.ControladorUsuario;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
@@ -209,7 +210,7 @@ public class Anadir extends javax.swing.JFrame {
         float precio;
         int unidades;
         
-        //Verificar si los campos numericos estan vacios
+        //Verificar si los campos numericos estan vacios (se debe realizar debido a que al crear un producto, es necesario que tenga algun numero, pero no puedes pasar un String vacio a int)
         if (!txtPrecio.getText().isEmpty()) {
             precio = Float.parseFloat(txtPrecio.getText());
         } else {
@@ -232,6 +233,7 @@ public class Anadir extends javax.swing.JFrame {
         
         //En caso de que la implementacion ha sido correcta se cerrará la ventana
         if(resultado.equals("Hecho")){
+            new ControladorUsuario().refreshMenuRoot();
             this.setVisible(false);
             JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);
             } else if(resultado.equals("Nombre")){

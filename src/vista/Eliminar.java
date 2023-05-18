@@ -3,6 +3,7 @@ package vista;
 import javax.swing.JOptionPane;
 import controlador.ControladorProducto;
 import controlador.ControladorSonido;
+import controlador.ControladorUsuario;
 
 public class Eliminar extends javax.swing.JFrame {
 
@@ -96,6 +97,7 @@ public class Eliminar extends javax.swing.JFrame {
                  JOptionPane.showMessageDialog(null, "La id introducida es incorrecta", "Alerta", JOptionPane.WARNING_MESSAGE);
            }else{
                new ControladorSonido().sonidoConfirmar();
+               new ControladorUsuario().refreshMenuRoot();
                this.setVisible(false);
            }
         } else {

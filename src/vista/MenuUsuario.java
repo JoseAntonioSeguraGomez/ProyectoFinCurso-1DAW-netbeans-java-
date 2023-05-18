@@ -537,4 +537,8 @@ public class MenuUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel txtJuegos;
     private javax.swing.JLabel txtNombre;
     // End of variables declaration//GEN-END:variables
+
+    public void refreshUsuario() {
+        btnActualizarActionPerformed(null);
+    }
 }

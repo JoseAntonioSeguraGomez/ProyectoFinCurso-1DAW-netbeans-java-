@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import controlador.ControladorProducto;
+import controlador.ControladorUsuario;
 import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -339,6 +340,7 @@ public class MenuRoot extends javax.swing.JFrame {
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnadirActionPerformed
         //Abre la vista Anadir 
         new Anadir();
+       
     }//GEN-LAST:event_btnAnadirActionPerformed
 
 
@@ -357,4 +359,9 @@ public class MenuRoot extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField txtFiltro;
     // End of variables declaration//GEN-END:variables
+
+    public void refreshRoot(){
+        btnVerProductosActionPerformed(null);
+    }
+
 }

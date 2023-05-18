@@ -83,6 +83,8 @@ public class EditarURL extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
         }
+        
+        new ControladorUsuario().refreshMenuUsuario();
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

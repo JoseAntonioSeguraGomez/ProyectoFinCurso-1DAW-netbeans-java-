@@ -102,6 +102,8 @@ public class AnadirFondos extends javax.swing.JFrame {
         //Se muestra un panel donde se muestra el resultado sea correcto o no la transacción
         new ControladorSonido().sonidoConfirmar();
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
+        
+        ControladorUsuario.refreshMenuUsuario();
 
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
