@@ -183,7 +183,7 @@ public class Menu extends javax.swing.JFrame {
                 txtContrasena.setBorder(bordeRojo);
                 jLabel8.setText("Algunos de los campos estan vacios");
             
-                //En caso de que los datos introducidos sean incorrectos 
+            //En caso de que los datos introducidos sean incorrectos 
             }else if(resultadoInicioSesion.equals("Incorrecto")){
                 txtUsuario.setBorder(bordeRojo);
                 txtContrasena.setBorder(bordeRojo);
