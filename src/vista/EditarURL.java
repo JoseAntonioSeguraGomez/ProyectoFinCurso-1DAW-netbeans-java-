@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorSonido;
 import controlador.ControladorUsuario;
 import javax.swing.JOptionPane;
 import modelo.Usuario;

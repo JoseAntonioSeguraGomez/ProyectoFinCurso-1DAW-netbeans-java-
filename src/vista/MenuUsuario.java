@@ -438,6 +438,11 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
+        //Verifica si esta pulsada alguna fila
+        if (Tabla.getSelectedRow() == -1) {
+            return; 
+        }
+        
         //Recoge los datos de la fila la cual deseé comprar
         int fila = Tabla.getSelectedRow();
         int id = Integer.parseInt(this.Tabla.getValueAt(fila, 0).toString());

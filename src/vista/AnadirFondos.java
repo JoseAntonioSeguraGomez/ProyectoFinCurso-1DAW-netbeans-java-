@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.ControladorSonido;
 import controlador.ControladorUsuario;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -99,6 +100,7 @@ public class AnadirFondos extends javax.swing.JFrame {
         this.setVisible(false);
 
         //Se muestra un panel donde se muestra el resultado sea correcto o no la transacción
+        new ControladorSonido().sonidoConfirmar();
         JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_btnConfirmarActionPerformed

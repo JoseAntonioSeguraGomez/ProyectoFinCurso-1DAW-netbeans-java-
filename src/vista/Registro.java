@@ -2,6 +2,7 @@ package vista;
 
 import modelo.Usuario;
 import controlador.ControladorUsuario;
+import controlador.ControladorSonido;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -30,6 +31,9 @@ public class Registro extends javax.swing.JFrame {
         txtTelefono.setBorder(bordeNormal);
         txtGmail.setBorder(bordeNormal);
         txtPais.setBorder(bordeNormal);
+        txtProvincia.setBorder(bordeNormal);
+        txtCiudad.setBorder(bordeNormal);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -447,6 +451,7 @@ public class Registro extends javax.swing.JFrame {
 
             //Se comprueba si el usuario es correcto, en caso afirmativo se cierra la ventana y en caso negativo se notifica una alerta
             if(resultado.equals("Hecho")){
+                new ControladorSonido().sonidoConfirmar();
                 this.setVisible(false);
                 JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);
             } else if(resultado.equals("Usuario")){

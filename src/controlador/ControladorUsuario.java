@@ -104,8 +104,9 @@ public class ControladorUsuario {
             error.add("Hecho");
             error.add("El usuario se ha creado correctamente");
             new Menu();
+            
+            //Este error es bueno
             return error;
-
         }
     } 
     
@@ -116,7 +117,20 @@ public class ControladorUsuario {
             return "Vacio";
         }else{
             String rol = new UsuariosBD().consultarInicioSesion(usuario);
-            return rol; 
+            
+            if(rol == null){
+                return "Incorrecto";
+            }   else {
+                if (rol.equals("Cliente")) {
+                    new MenuUsuario(usuario);
+                    return "correcto";
+                } else if (rol.equals("root")) {
+                    new MenuRoot();
+                    return "correcto";
+                    //En caso de que alguno de los campos estén vacios
+                }
+                    return "Incorrecto";
+            }
         }
         
     }

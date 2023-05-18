@@ -286,7 +286,7 @@ public class MenuRoot extends javax.swing.JFrame {
         //Recoge los datos de la fila seleccionada
         int fila = Tabla.getSelectedRow();
         if(fila != -1){
-                    int id = Integer.parseInt(this.Tabla.getValueAt(fila, 0).toString());
+        int id = Integer.parseInt(this.Tabla.getValueAt(fila, 0).toString());
         String nombre = this.Tabla.getValueAt(fila, 1).toString();
         String descripcion = this.Tabla.getValueAt(fila, 2).toString();
         String genero = this.Tabla.getValueAt(fila, 3).toString();
@@ -301,8 +301,7 @@ public class MenuRoot extends javax.swing.JFrame {
         new controlador.ControladorProducto().ActualizarProductos(producto);
         cargarTabla();
         }else{
-            JOptionPane.showMessageDialog(null, "No has seleccionado ninguna tabla", "Alerta", JOptionPane.WARNING_MESSAGE);
-
+            JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fila", "Alerta", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_btnEditarActionPerformed

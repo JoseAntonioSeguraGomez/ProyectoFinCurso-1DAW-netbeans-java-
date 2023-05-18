@@ -176,25 +176,19 @@ public class Menu extends javax.swing.JFrame {
         String resultadoInicioSesion = new ControladorUsuario().IniciarSesion(usuario1);
 
         //Si el rol no es nulo, significa que existe con lo cual se comprueba el rol y se abre su respectiva vista
-        if (resultadoInicioSesion != null) {
-            if (resultadoInicioSesion.equals("Cliente")) {
-                this.setVisible(false);
-                new MenuUsuario(usuario1);
-            } else if (resultadoInicioSesion.equals("root")) {
-                this.setVisible(false);
-                new MenuRoot();
-                //En caso de que alguno de los campos estén vacios
-            } else if(resultadoInicioSesion.equals("Vacio")){
+            if(resultadoInicioSesion.equals("Vacio")){
                 txtUsuario.setBorder(bordeRojo);
                 txtContrasena.setBorder(bordeRojo);
                 jLabel8.setText("Algunos de los campos estan vacios");
-            }
-            //En caso de que los datos introducidos sean incorrectos
-        } else {
+            
+                //En caso de que los datos introducidos sean incorrectos 
+            }else if(resultadoInicioSesion.equals("Incorrecto")){
                 txtUsuario.setBorder(bordeRojo);
                 txtContrasena.setBorder(bordeRojo);
                 jLabel8.setText("Las credenciales introducidas son incorrectas");
-        }
+            }else if(resultadoInicioSesion.equals("correcto")){
+                this.setVisible(false);
+            }
                 
         
     }//GEN-LAST:event_btnIniciarSesionActionPerformed

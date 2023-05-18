@@ -24,6 +24,7 @@ public class main extends controlador {
             Thread.sleep(5000);
             inicio.setVisible(false);
             inicioCarga.setVisible(true); 
+            new ControladorSonido().sonidoIntro();
             
             Thread.sleep(5000);
             inicioCarga.setVisible(false);
