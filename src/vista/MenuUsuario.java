@@ -1,11 +1,13 @@
 package vista;
 
 import controlador.*;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Image;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -28,6 +30,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         iniciarComboBox();
         cargarElementosMenu();
         obtenerFotoPerfil();
+        cargarDisenoCuadros();
         setLocationRelativeTo(null);
         setVisible(true);  
     }
@@ -153,11 +156,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         
         //Obtener numeroJuegos
         ArrayList<String[]> productos = new ControladorUsuario().obtenerDatosFactura(usuario);
-        productos = new ArrayList<>();
-        
-        if(productos.isEmpty()){
+
+        if (productos.isEmpty()) {
             numeroJuegos = "0";
-        }else{
+        } else {
             numeroJuegos = Integer.toString(productos.size());
         }
 
@@ -187,6 +189,11 @@ public class MenuUsuario extends javax.swing.JFrame {
                 // La URL de la imagen es incorrecta
                 e.printStackTrace();
             } 
+    }
+    
+    public void cargarDisenoCuadros(){
+        javax.swing.border.Border border = BorderFactory.createLineBorder(Color.BLACK);
+        btnCerrarSesion.setBorder(border);
     }
 
     @SuppressWarnings("unchecked")
@@ -219,6 +226,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -240,6 +248,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         ));
         Tabla.setRowHeight(32);
         Tabla.setShowGrid(false);
+        Tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Tabla);
         Tabla.getColumnModel().getColumn(0).setMaxWidth(2);
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(2);
@@ -257,7 +266,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 btnFiltrarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 130, 40, 40));
+        jPanel1.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 40, 40));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, 190, 20));
 
         txtFiltro.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +274,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 txtFiltroActionPerformed(evt);
             }
         });
-        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 130, 90, 40));
+        jPanel1.add(txtFiltro, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 90, 40));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -274,7 +283,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 140, 40));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 130, 40));
 
         btnComprar.setBackground(new java.awt.Color(0, 255, 204));
         btnComprar.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
@@ -286,7 +295,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 btnComprarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 130, 120, 40));
+        jPanel1.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, 120, 40));
 
         btnAnadirFondos.setBackground(new java.awt.Color(0, 255, 204));
         btnAnadirFondos.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
@@ -298,7 +307,7 @@ public class MenuUsuario extends javax.swing.JFrame {
                 btnAnadirFondosActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAnadirFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 130, 150, 40));
+        jPanel1.add(btnAnadirFondos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 130, 160, 40));
 
         btnFactura.setBackground(new java.awt.Color(0, 255, 204));
         btnFactura.setFont(new java.awt.Font("Source Code Pro", 1, 12)); // NOI18N
@@ -313,7 +322,8 @@ public class MenuUsuario extends javax.swing.JFrame {
         jPanel1.add(btnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 130, 150, 40));
 
         btnCerrarSesion.setBackground(new java.awt.Color(255, 0, 0));
-        btnCerrarSesion.setFont(new java.awt.Font("Source Code Pro", 0, 12)); // NOI18N
+        btnCerrarSesion.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(9, 9, 9));
         btnCerrarSesion.setText("Cerrar Sesión");
         btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {

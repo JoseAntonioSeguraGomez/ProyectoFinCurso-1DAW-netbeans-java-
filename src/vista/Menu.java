@@ -3,6 +3,9 @@ package vista;
 import bbdd.conector;
 import modelo.Usuario;
 import controlador.ControladorUsuario;
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.border.Border;
 
 public class Menu extends javax.swing.JFrame {
 
@@ -10,7 +13,15 @@ public class Menu extends javax.swing.JFrame {
     public Menu() {
         initComponents();
         setLocationRelativeTo(null);
+        resetearBordesNormales();
         setVisible(true);
+    }
+    
+    // Método para restablecer los bordes de los campos de texto
+    private void resetearBordesNormales() {
+        Border bordeNormal = BorderFactory.createLineBorder(Color.BLACK);
+        txtUsuario.setBorder(bordeNormal);
+        txtContrasena.setBorder(bordeNormal);
     }
 
     @SuppressWarnings("unchecked")
@@ -149,6 +160,10 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        //Declaro un borde rojo
+        Border bordeRojo = BorderFactory.createLineBorder(Color.RED);
+        resetearBordesNormales();
+        
         //Iniciar Sesion
         //Recogemos los datos introducidos por el usuario
         String usuario = txtUsuario.getText();
@@ -168,12 +183,16 @@ public class Menu extends javax.swing.JFrame {
             } else if (resultadoInicioSesion.equals("root")) {
                 this.setVisible(false);
                 new MenuRoot();
-            } else {
-                //En caso de que el rol sea diferente a los establecidos
-                jLabel8.setText("Las credenciales introducidas son incorrectas");
+                //En caso de que alguno de los campos estén vacios
+            } else if(resultadoInicioSesion.equals("Vacio")){
+                txtUsuario.setBorder(bordeRojo);
+                txtContrasena.setBorder(bordeRojo);
+                jLabel8.setText("Algunos de los campos estan vacios");
             }
             //En caso de que los datos introducidos sean incorrectos
         } else {
+                txtUsuario.setBorder(bordeRojo);
+                txtContrasena.setBorder(bordeRojo);
                 jLabel8.setText("Las credenciales introducidas son incorrectas");
         }
                 

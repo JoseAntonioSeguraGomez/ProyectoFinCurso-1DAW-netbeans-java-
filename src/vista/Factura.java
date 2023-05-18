@@ -97,6 +97,7 @@ public class Factura extends javax.swing.JFrame {
             }
         });
         Tabla.setEnabled(false);
+        Tabla.getTableHeader().setReorderingAllowed(false);
         Tabla.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 TablaPropertyChange(evt);

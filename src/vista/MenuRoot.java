@@ -166,6 +166,7 @@ public class MenuRoot extends javax.swing.JFrame {
         ));
         Tabla.setRowHeight(32);
         Tabla.setShowGrid(false);
+        Tabla.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(Tabla);
         if (Tabla.getColumnModel().getColumnCount() > 0) {
             Tabla.getColumnModel().getColumn(0).setMinWidth(3);

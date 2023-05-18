@@ -30,7 +30,7 @@ public class ControladorUsuario {
         //Verificamos si el usuario ya existe 
         String existe = usuarios.existeUsuario(usuario);
         
-        //Convierte el telefono en un String
+        //Convierte el telefono en un String 
         String telefonoString = String.valueOf(usuario.getTelefono());
 
         //Verifica las diferentes condiciones que podrían surgir, en caso afirmativo devolvera un String con el error, si no se realizara la operación
@@ -111,8 +111,14 @@ public class ControladorUsuario {
     
     //Verificar si el usuario introducido es correcto
     public String IniciarSesion(Usuario usuario) {
-        String rol = new UsuariosBD().consultarInicioSesion(usuario);
-        return rol;
+        //Verifica si alguno de los campos están vacios
+        if(usuario.getUsuario().equals("") || usuario.getContrasena().equals("")){
+            return "Vacio";
+        }else{
+            String rol = new UsuariosBD().consultarInicioSesion(usuario);
+            return rol; 
+        }
+        
     }
     
     public Usuario recogerDatosUsuario(Usuario usuario){
