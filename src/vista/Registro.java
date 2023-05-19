@@ -540,7 +540,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void txtNacimientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNacimientoKeyTyped
 
-        if(txtNacimiento.getText().length() == 20){
+        if(txtNacimiento.getText().length() == 50){
             evt.consume();
         }
     }//GEN-LAST:event_txtNacimientoKeyTyped
