@@ -239,7 +239,7 @@ public class ControladorUsuario {
             try{
                 //Creamos el nuevo fichero
                 File factura = new File(nombreFichero);
-                BufferedWriter escribirFactura = new BufferedWriter(new FileWriter(factura, true));
+                BufferedWriter escribirFactura = new BufferedWriter(new   FileWriter(factura, true));
                 
                 //Generar codigoFactura
                 String codigo = codigoAleatorio() + tresPrimerasLetras(producto);
@@ -317,7 +317,7 @@ public class ControladorUsuario {
         return tresPrimerasLetras;
     }
     
-    public ArrayList<String[]> obtenerDatosFactura(Usuario usuario){
+      public ArrayList<String[]> obtenerDatosFactura(Usuario usuario){
         //Establece el nombre del fichero con el nombre del ususario
         String nombreFichero = "src/facturas/" + usuario.getUsuario() + ".txt";
 

@@ -1,6 +1,5 @@
 package vista;
 
-import controlador.ControladorSonido;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
