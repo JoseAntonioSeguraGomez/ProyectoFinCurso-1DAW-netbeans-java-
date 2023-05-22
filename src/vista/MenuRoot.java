@@ -5,6 +5,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import controlador.ControladorProducto;
 import controlador.ControladorSonido;
+import controlador.ControladorUsuario;
 import java.awt.Component;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ public class MenuRoot extends javax.swing.JFrame {
     //Cargamos los elementos de la tabla
     private void cargarTabla() {
         //Introduzco en un array el nombre de las columnas
-        String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+        String[] nombresColumnas = {"ID", "Nombre", "Descripción", "Género", "Categoría", "Precio", "Unidades"};
         
         //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
@@ -54,7 +55,7 @@ public class MenuRoot extends javax.swing.JFrame {
     //Cargamos los elementos de la tabla con unos datos en concreto
     private void cargarTablaConDatos(ArrayList<String[]> productos) {
         //Introduzco en un array el nombre de las columnas
-        String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+        String[] nombresColumnas = {"ID", "Nombre", "Descripción", "Género", "Categoría", "Precio", "Unidades"};
         
         //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
@@ -289,17 +290,45 @@ public class MenuRoot extends javax.swing.JFrame {
         String nombre = this.Tabla.getValueAt(fila, 1).toString();
         String descripcion = this.Tabla.getValueAt(fila, 2).toString();
         String genero = this.Tabla.getValueAt(fila, 3).toString();
-        int categoria = Integer.parseInt(this.Tabla.getValueAt(fila, 4).toString());
-        float precio = Float.parseFloat(this.Tabla.getValueAt(fila, 5).toString());
-        int unidades = Integer.parseInt(this.Tabla.getValueAt(fila, 6).toString());
+        int categoria;
+        float precio;
+        int unidades;
+        
+        //Verificar si los campos numericos estan vacios (se debe realizar debido a que al crear un producto, es necesario que tenga algun numero, pero no puedes pasar un String vacio a int)
+        if (!this.Tabla.getValueAt(fila, 4).toString().isEmpty()) {
+            categoria = Integer.parseInt(this.Tabla.getValueAt(fila, 4).toString());
+        } else {
+            categoria = 0;
+        }
+        
+        if (!this.Tabla.getValueAt(fila, 5).toString().isEmpty()) {
+            precio = Float.parseFloat(this.Tabla.getValueAt(fila, 5).toString());
+        } else {
+            precio = 0;
+        }
+        
+        if (!this.Tabla.getValueAt(fila, 6).toString().isEmpty()) {
+            unidades = Integer.parseInt(this.Tabla.getValueAt(fila, 6).toString().toString());
+        } else {
+            unidades = 0;
+        }
 
         //Crea un producto con los datos recogidos
         Producto producto = new Producto(id, nombre, descripcion, genero, categoria, precio, unidades);
         
         //Llama al controlador y envia el producto
-        new controlador.ControladorProducto().ActualizarProductos(producto);
-        new ControladorSonido().sonidoConfirmar();
-
+        String resultado = new controlador.ControladorProducto().ActualizarProductos(producto);
+        
+        //Verificaciones de los datos introducidos
+        if(resultado.equals("Hecho")){
+            new ControladorSonido().sonidoConfirmar();
+            
+            } else if(resultado == null){
+                JOptionPane.showMessageDialog(null, "Error al introducir datos", "Alerta", JOptionPane.WARNING_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, resultado, "Alerta", JOptionPane.WARNING_MESSAGE);
+            }
+        
         }else{
             JOptionPane.showMessageDialog(null, "No has seleccionado ninguna fila", "Alerta", JOptionPane.WARNING_MESSAGE);
         }

@@ -25,7 +25,7 @@ public class ControladorUsuario {
     static MenuRoot menuRoot;
 
     
-    public ArrayList<String> AnadirUsuarios(Usuario usuario){
+    public ArrayList<String> AnadirUsuarios(Usuario usuario, String confirmarGmail, String confirmarContrasena){
         //Creamos un array para almacenar el error y el texto
         ArrayList<String> error = new ArrayList<String>();
         
@@ -67,6 +67,10 @@ public class ControladorUsuario {
             error.add("Contrasena");
             error.add("El campo contraseña debe contener algún número");
             return error;
+        } else if(!usuario.getContrasena().equals(confirmarContrasena)){
+            error.add("Contrasena2");
+            error.add("Las contraseñas introducidas no coinciden");
+            return error;
         } else if(usuario.getNombre().equals("")){
             error.add("Nombre");
             error.add("El campo nombre está vacio");
@@ -79,9 +83,9 @@ public class ControladorUsuario {
             error.add("Nacimiento");
             error.add("El campo nacimiento está vacio");
             return error;
-        } else if (!usuario.getNacimiento().matches("\\d{4}-\\d{2}-\\d{2}")) {
+        } else if (!usuario.getNacimiento().matches("\\d{2}-\\d{2}-\\d{4}")) {
             error.add("Nacimiento");
-            error.add("El campo nacimento es incorrecto (*año-mes-dia*)");
+            error.add("El campo nacimento es incorrecto (*dia-mes-año*)");
             return error;
         } else if(telefonoString.equals("0")){
             error.add("Telefono");
@@ -99,11 +103,29 @@ public class ControladorUsuario {
             error.add("Email");
             error.add("El campo Email tiene un formato erroneo");
             return error;
-        }else if(usuario.getPais().equals("")){
+        } else if(!usuario.getGmail().equals(confirmarGmail)){
+            error.add("Email2");
+            error.add("Los correos introducidos no coinciden");
+            return error;
+        } else if(usuario.getPais().equals("")){
             error.add("Pais");
             error.add("El campo pais está vacio");
             return error;
         } else {
+            String fechaNacimiento = usuario.getNacimiento();
+
+            //Separar la fecha de nacimiento, para que lo pueda recoger mysql
+            String[] partes = fechaNacimiento.split("-");
+            String dia = partes[0];
+            String mes = partes[1];
+            String anio = partes[2];
+
+            //Invierte la fecha de nacimiento
+            String fechaInvertida = anio + "-" + mes + "-" + dia;
+            
+            //Actualiza la fecha de nacimiento
+            usuario.setNacimiento(fechaInvertida);
+            
             //Si todas las condiciones se cumplen, se agrega el usuario a la base de datos
             usuarios.anadirUsuariosBD(usuario);
             error.add("Hecho");

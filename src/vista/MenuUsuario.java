@@ -38,7 +38,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     //Cargamos los elementos de la tabla
     private void cargarTabla() {
         //Introduzco en un array el nombre de las columnas
-        String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+        String[] nombresColumnas = {"ID", "Nombre", "Descripción", "Género", "Categoría", "Precio", "Unidades"};
 
         //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
@@ -50,7 +50,10 @@ public class MenuUsuario extends javax.swing.JFrame {
         //Asignamos a la tabla un fondo opaco
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
-
+        
+        //Bloquear Edición
+        Tabla.setDefaultEditor(Object.class, null);
+        
         //Recoge los datos de la tabla productos
         ArrayList<String[]> productos = new ControladorProducto().obtenerDatos();
          for (int i = 0; i < productos.size(); i++) {
@@ -69,7 +72,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     //Cargamos los elementos de la tabla con unos datos en concreto
     private void cargarTablaConDatos(ArrayList<String[]> productos) {
         //Introduzco en un array el nombre de las columnas
-        String[] nombresColumnas = {"id", "nombre", "descripcion", "genero", "categoria", "precio", "unidades"};
+        String[] nombresColumnas = {"ID", "Nombre", "Descripción", "Género", "Categoría", "Precio", "Unidades"};
         
         //Creamos un nuevo modelo para la tabla donde se introduzca el array anterior
         modelo = new DefaultTableModel(null,nombresColumnas);
@@ -79,6 +82,9 @@ public class MenuUsuario extends javax.swing.JFrame {
         //Establecemos a la tabla el modelo y asignamos de forma predeterminada 0 filas
         jScrollPane1.setOpaque(false);
         jScrollPane1.getViewport().setOpaque(false);
+        
+        //Bloquear Edición
+        Tabla.setDefaultEditor(Object.class, null);
                 
         //Recoge los datos a la tabla productos
          for (int i = 0; i < productos.size(); i++) {

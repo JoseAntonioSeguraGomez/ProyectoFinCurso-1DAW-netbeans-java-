@@ -55,11 +55,11 @@ public class ControladorProducto {
             return error;
         }else if(producto.getNombre().equals("")){
             error.add("Nombre");
-            error.add("El campo nombre esta vacio");
+            error.add("El campo nombre está vacío");
             return error;        
         } else if(producto.getDescripcion().equals("")) {
             error.add("Descripcion");
-            error.add("El campo descripcion esta vacio");
+            error.add("El campo descripción está vacío");
             return error;
         } else if(producto.getDescripcion().length() < 10) {
             error.add("Descripcion");
@@ -67,15 +67,15 @@ public class ControladorProducto {
             return error;
         } else if(producto.getGenero().equals("")) {
             error.add("Genero");
-            error.add("El campo genero esta vacio");
+            error.add("El campo género está vacío");
             return error;
         } else if(precioString.equals("")) {
             error.add("Precio");
-            error.add("El campo precio esta vacio");
+            error.add("El campo precio está vacío");
             return error;
         }else if(unidadesString.equals("")) {
             error.add("Unidades");
-            error.add("El campo unidades esta vacio");
+            error.add("El campo unidades está vacío");
             return error;
         } else {
             //Llama al método de la base de datos para añadir el producto
@@ -87,9 +87,41 @@ public class ControladorProducto {
     }
 
     public String ActualizarProductos(Producto producto){
-        //Llama a la base de datos para verificar si el producto existe a la hora de hacer el update
-        String existe = new ProductosBD().EditarProducto(producto);
-        return existe;
+        //Creamos un array para almacenar el error y el texto
+        String error;
+        
+        //Convierte los campos numéricos del producto a String
+        String categoriaString = String.valueOf(producto.getCategoria());
+        String precioString;
+        String unidadesString;
+        
+        //Comprobaciones si un campo es menor o igual a 0
+        if(producto.getPrecio() <= 0){
+            precioString = ""; 
+        }else{
+            precioString = String.valueOf(producto.getPrecio());
+        }
+        
+        //Verifica diferentes condiciones a la hora de actualizar el producto
+        if(producto.getNombre().equals("")){
+            return ("El campo nombre está vacío");
+        } else if(producto.getDescripcion().equals("")) {
+            return ("El campo descripción está vacío");
+        } else if(producto.getDescripcion().length() < 10) {
+            return ("La descripción es demasiado corta");
+        } else if(!(producto.getCategoria() == 3 || producto.getCategoria() == 7 || producto.getCategoria() == 12 || producto.getCategoria() == 18)){
+            return ("La categoría es incorrecta");
+        } else if(producto.getGenero().equals("")) {
+            return ("El campo genero está vacío");
+        } else if(precioString.equals("")) {
+            return ("El campo precio está vacío");
+        }else if(producto.getUnidades() < 0) {
+            return ("El campo unidades es negativo");
+        } else {
+            //Llama a la base de datos para verificar si el producto existe a la hora de hacer el update
+            error = new ProductosBD().EditarProducto(producto);
+            return error;
+        }
     }
 
     public ArrayList<String[]> MostrarFiltro(String nombre){

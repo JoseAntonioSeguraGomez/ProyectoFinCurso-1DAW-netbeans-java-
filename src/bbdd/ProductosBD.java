@@ -90,7 +90,7 @@ public class ProductosBD {
             
             //Ejecuta el update
             conector.EjecutarUpdate("UPDATE productos SET nombre = '" + nombre + "', descripcion = '" + descripcion + "', genero = '" + genero + "', categoria = " + categoria + ", precio = " + precio + ", unidades = " + unidades + " WHERE id = " + id );
-            return "hecho";
+            return "Hecho";
             
          //En caso de error devuelve un null
          }catch (Exception ex){

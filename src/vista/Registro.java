@@ -33,6 +33,8 @@ public class Registro extends javax.swing.JFrame {
         txtPais.setBorder(bordeNormal);
         txtProvincia.setBorder(bordeNormal);
         txtCiudad.setBorder(bordeNormal);
+        txtConfirmarContrasena.setBorder(bordeNormal);
+        txtConfirmarGmail.setBorder(bordeNormal);
 
     }
 
@@ -79,6 +81,12 @@ public class Registro extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        txtConfirmarContrasena = new javax.swing.JPasswordField();
+        txtConfirmarGmail = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -99,7 +107,7 @@ public class Registro extends javax.swing.JFrame {
                 btnRegistrarseActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 510, 150, 40));
+        jPanel1.add(btnRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, 150, 40));
 
         btnVolver.setBackground(new java.awt.Color(0, 102, 204));
         btnVolver.setFont(new java.awt.Font("Source Code Pro Black", 0, 14)); // NOI18N
@@ -112,7 +120,7 @@ public class Registro extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 510, -1, 40));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 520, -1, 40));
 
         txtCiudad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +132,7 @@ public class Registro extends javax.swing.JFrame {
                 txtCiudadKeyTyped(evt);
             }
         });
-        jPanel1.add(txtCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 180, -1));
+        jPanel1.add(txtCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 180, -1));
 
         txtProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,17 +144,17 @@ public class Registro extends javax.swing.JFrame {
                 txtProvinciaKeyTyped(evt);
             }
         });
-        jPanel1.add(txtProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, 180, -1));
+        jPanel1.add(txtProvincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 180, -1));
 
         jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("  Provincia:");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 80, 20));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 80, 20));
 
         jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText(" Ciudad:");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, 60, 20));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 60, 20));
 
         txtPais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,17 +166,17 @@ public class Registro extends javax.swing.JFrame {
                 txtPaisKeyTyped(evt);
             }
         });
-        jPanel1.add(txtPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 370, 180, -1));
+        jPanel1.add(txtPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 180, -1));
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText(" País:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 40, 20));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 40, 20));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("DATOS DOMICILIO:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 330, 180, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, 180, -1));
 
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,8 +192,8 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Email:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 50, 20));
+        jLabel12.setText("Confirmar:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 320, 80, 20));
 
         txtGmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +227,7 @@ public class Registro extends javax.swing.JFrame {
                 txtNacimientoKeyTyped(evt);
             }
         });
-        jPanel1.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, 180, -1));
+        jPanel1.add(txtNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 180, -1));
 
         txtApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +239,7 @@ public class Registro extends javax.swing.JFrame {
                 txtApellidosKeyTyped(evt);
             }
         });
-        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 180, -1));
+        jPanel1.add(txtApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 180, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,27 +251,27 @@ public class Registro extends javax.swing.JFrame {
                 txtNombreKeyTyped(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 370, 180, -1));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 180, -1));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText(" Nacimiento:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, 90, 20));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 480, 90, 20));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Apellidos:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 410, -1, 20));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText(" Nombre:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 70, 20));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 400, 70, 20));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("DATOS PERSONALES:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 330, 180, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 180, -1));
 
         txtContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,8 +287,8 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Contraseña:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, 20));
+        jLabel5.setText("Confirmar:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, -1, 20));
 
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +325,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22.setText("*");
-        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 10, 40));
+        jPanel1.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 10, 40));
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 0, 0));
@@ -327,12 +335,12 @@ public class Registro extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("*");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 360, 10, 40));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, 10, 40));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 0, 0));
         jLabel19.setText("*");
-        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 440, 10, 40));
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 470, 10, 40));
 
         jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 0, 0));
@@ -342,7 +350,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 0, 0));
         jLabel23.setText("*");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 360, 10, 40));
+        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 390, 10, 40));
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -352,12 +360,56 @@ public class Registro extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 0, 0));
         jLabel24.setText("*");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 270, 10, 40));
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 310, 10, 40));
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 0, 0));
         jLabel25.setText("*");
-        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 10, 40));
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 430, 10, 40));
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("Contraseña:");
+        jPanel1.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, 20));
+
+        txtConfirmarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmarContrasenaActionPerformed(evt);
+            }
+        });
+        txtConfirmarContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtConfirmarContrasenaKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtConfirmarContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, 180, -1));
+
+        txtConfirmarGmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtConfirmarGmailActionPerformed(evt);
+            }
+        });
+        txtConfirmarGmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtConfirmarGmailKeyTyped(evt);
+            }
+        });
+        jPanel1.add(txtConfirmarGmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 320, 180, -1));
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("Email:");
+        jPanel1.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 278, 50, -1));
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel28.setText("*");
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 270, 10, 40));
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel29.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel29.setText("*");
+        jPanel1.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 270, 10, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\joans\\Desktop\\Imagenes\\Registro.png")); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -371,10 +423,6 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContrasenaActionPerformed
-
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
@@ -386,10 +434,6 @@ public class Registro extends javax.swing.JFrame {
     private void txtNacimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNacimientoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNacimientoActionPerformed
-
-    private void txtGmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtGmailActionPerformed
 
     private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
         // TODO add your handling code here:
@@ -441,50 +485,60 @@ public class Registro extends javax.swing.JFrame {
         }else{
             telefono = Integer.parseInt(txtTelefono.getText());
         }   
-            //Crea un nuevo usuario con los datos introducidos
-            Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
+        
+        //Crea un nuevo usuario con los datos introducidos
+        Usuario usuario1 = new Usuario(usuario, contrasena, nombre, apellidos, nacimiento, telefono, gmail, pais, provincia, ciudad);
 
-            //Se envia al controlador para que verifique que todos los datos son correctos
-            ArrayList<String> respuesta = new ControladorUsuario().AnadirUsuarios(usuario1);
-            String resultado = respuesta.get(0);
-            String alerta = respuesta.get(1);
+        //Se envia al controlador para que verifique que todos los datos son correctos
+        ArrayList<String> respuesta = new ControladorUsuario().AnadirUsuarios(usuario1, txtConfirmarGmail.getText(), txtConfirmarContrasena.getText());
+        String resultado = respuesta.get(0);
+        String alerta = respuesta.get(1);
 
+        
 
-            //Se comprueba si el usuario es correcto, en caso afirmativo se cierra la ventana y en caso negativo se notifica una alerta
-            if(resultado.equals("Hecho")){
-                new ControladorSonido().sonidoConfirmar();
-                this.setVisible(false);
-                JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);
-            } else if(resultado.equals("Usuario")){
-                txtUsuario.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            }  else if(resultado.equals("Error")){
-                txtUsuario.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Contrasena")){
-                txtContrasena.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Nombre")){
-                txtNombre.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Apellidos")){
-                txtApellidos.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Nacimiento")){
-                txtNacimiento.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Telefono")){
-                txtTelefono.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Email")){
-                txtGmail.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else if(resultado.equals("Pais")){
-                txtPais.setBorder(bordeRojo);
-                txtAlerta.setText(alerta);
-            } else {
-                this.setVisible(false);
-            }
+        //Se comprueba si el usuario es correcto, en caso afirmativo se cierra la ventana y en caso negativo se notifica una alerta
+        if(resultado.equals("Usuario")){
+            txtUsuario.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        }  else if(resultado.equals("Error")){
+            txtUsuario.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Contrasena")){
+            txtContrasena.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Contrasena2")){
+            txtConfirmarContrasena.setBorder(bordeRojo);
+            txtContrasena.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Nombre")){
+            txtNombre.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Apellidos")){
+            txtApellidos.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Nacimiento")){
+            txtNacimiento.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Telefono")){
+            txtTelefono.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Email")){
+            txtGmail.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Email2")){
+            txtConfirmarGmail.setBorder(bordeRojo);
+            txtGmail.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Pais")){
+            txtPais.setBorder(bordeRojo);
+            txtAlerta.setText(alerta);
+        } else if(resultado.equals("Hecho")){
+            new ControladorSonido().sonidoConfirmar();
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null, alerta, "Alerta", JOptionPane.WARNING_MESSAGE);
+        }else{
+            this.setVisible(false);
+        }
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     //Comprobaciones sobre que caracteres se deben poner en todos los txt
@@ -495,13 +549,6 @@ public class Registro extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtUsuarioKeyTyped
-
-    private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
-        //No podra exceder los 20 caracteres
-        if(txtContrasena.getText().length() == 20){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtContrasenaKeyTyped
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         //Solo podra escribir caracteres y no digitos
@@ -561,12 +608,6 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
-    private void txtGmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGmailKeyTyped
-        if(txtGmail.getText().length() == 20){
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtGmailKeyTyped
-
     private void txtPaisKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPaisKeyTyped
         //Solo podra escribir texto
         
@@ -621,6 +662,43 @@ public class Registro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtCiudadKeyTyped
 
+    private void txtConfirmarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarContrasenaActionPerformed
+
+    private void txtConfirmarContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConfirmarContrasenaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarContrasenaKeyTyped
+
+    private void txtConfirmarGmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtConfirmarGmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarGmailActionPerformed
+
+    private void txtConfirmarGmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtConfirmarGmailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtConfirmarGmailKeyTyped
+
+    private void txtGmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGmailKeyTyped
+        if(txtGmail.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtGmailKeyTyped
+
+    private void txtGmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGmailActionPerformed
+
+    private void txtContrasenaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyTyped
+        //No podra exceder los 20 caracteres
+        if(txtContrasena.getText().length() == 20){
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtContrasenaKeyTyped
+
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContrasenaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegistrarse;
     private javax.swing.JButton btnVolver;
@@ -642,6 +720,10 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -654,6 +736,8 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JLabel txtAlerta;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCiudad;
+    private javax.swing.JPasswordField txtConfirmarContrasena;
+    private javax.swing.JTextField txtConfirmarGmail;
     private javax.swing.JPasswordField txtContrasena;
     private javax.swing.JTextField txtGmail;
     private javax.swing.JTextField txtNacimiento;
